@@ -1,0 +1,6 @@
+{
+    "sonarlint.connectedMode.project": {
+        "connectionId": "nicopamp",
+        "projectKey": "nicopamp_RoundRobinPro"
+    }
+}
