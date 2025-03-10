@@ -21,23 +21,6 @@
 		03CDD5982D57C71300664E75 /* RoundRobinPro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoundRobinPro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		0329AF1C2D7F20CE00CC8D1E /* Exceptions for "RoundRobinPro" folder in "RoundRobinPro" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Tests/TournamentTests.swift,
-			);
-			target = 03CDD5972D57C71300664E75 /* RoundRobinPro */;
-		};
-		0329AF1E2D7F20D200CC8D1E /* Exceptions for "RoundRobinPro" folder in "RoundRobinProTests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Tests/TournamentTests.swift,
-			);
-			target = 0329AF122D7F20C800CC8D1E /* RoundRobinProTests */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		0329AF142D7F20C800CC8D1E /* RoundRobinProTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
@@ -46,10 +29,6 @@
 		};
 		03CDD59A2D57C71300664E75 /* RoundRobinPro */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				0329AF1C2D7F20CE00CC8D1E /* Exceptions for "RoundRobinPro" folder in "RoundRobinPro" target */,
-				0329AF1E2D7F20D200CC8D1E /* Exceptions for "RoundRobinPro" folder in "RoundRobinProTests" target */,
-			);
 			path = RoundRobinPro;
 			sourceTree = "<group>";
 		};

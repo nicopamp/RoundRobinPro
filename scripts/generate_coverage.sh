@@ -4,10 +4,10 @@
 set -e
 
 # Change to project root directory
-cd "$(dirname "$0")/../.."
+cd "$(dirname "$0")/.."
 
 # Create coverage directory if it doesn't exist
-mkdir -p RoundRobinPro/coverage
+mkdir -p coverage
 
 # Check if xcpretty is installed
 if ! command -v xcpretty &> /dev/null; then
@@ -17,7 +17,7 @@ fi
 
 # Clean up existing coverage files
 echo "Cleaning up existing coverage files..."
-rm -rf RoundRobinPro/coverage/coverage.xcresult RoundRobinPro/coverage/coverage.json RoundRobinPro/coverage/coverage.xml
+rm -rf coverage/coverage.xcresult coverage/coverage.json coverage/coverage.xml
 
 # Clean the build folder
 echo "Cleaning build folder..."
@@ -30,29 +30,29 @@ xcodebuild test \
     -scheme RoundRobinPro \
     -destination "platform=iOS Simulator,id=7F6A69BD-4ED0-47F7-B802-2445431224AB" \
     -enableCodeCoverage YES \
-    -resultBundlePath ./RoundRobinPro/coverage/coverage.xcresult \
+    -resultBundlePath ./coverage/coverage.xcresult \
     | xcpretty
 
 # Generate coverage report
 echo "Generating coverage report..."
-xcrun xccov view --report --json RoundRobinPro/coverage/coverage.xcresult > RoundRobinPro/coverage/coverage.json
+xcrun xccov view --report --json coverage/coverage.xcresult > coverage/coverage.json
 
 # Convert to SonarQube format
 echo "Converting to SonarQube format..."
-xcrun xccov view --report RoundRobinPro/coverage/coverage.xcresult > RoundRobinPro/coverage/coverage.xml
+xcrun xccov view --report coverage/coverage.xcresult > coverage/coverage.xml
 
 # Verify files were created
 echo "Verifying coverage files..."
-if [ -f "RoundRobinPro/coverage/coverage.json" ]; then
+if [ -f "coverage/coverage.json" ]; then
     echo "✓ coverage.json created successfully"
 else
     echo "✗ Failed to create coverage.json"
     exit 1
 fi
 
-if [ -f "RoundRobinPro/coverage/coverage.xml" ]; then
+if [ -f "coverage/coverage.xml" ]; then
     echo "✓ coverage.xml created successfully"
-    echo "File location: $(pwd)/RoundRobinPro/coverage/coverage.xml"
+    echo "File location: $(pwd)/coverage/coverage.xml"
 else
     echo "✗ Failed to create coverage.xml"
     exit 1
