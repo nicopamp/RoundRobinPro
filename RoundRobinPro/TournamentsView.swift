@@ -81,6 +81,9 @@ struct TournamentsView: View {
             }
             return store
         }(),
-        saveAction: {}
+        saveAction: {
+            // Preview only: Print a message when save is triggered
+            print("Preview: Save action triggered")
+        }
     )
 }

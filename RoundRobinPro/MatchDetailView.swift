@@ -68,7 +68,9 @@ struct MatchDetailView: View {
         }
         .navigationTitle("Match Details")
         .alert("Invalid Scores", isPresented: $showingAlert) {
-            Button("OK", role: .cancel) { }
+            Button("OK", role: .cancel) {
+                // No action needed - .cancel role automatically dismisses the alert
+            }
         } message: {
             Text("Please enter valid scores for both teams")
         }

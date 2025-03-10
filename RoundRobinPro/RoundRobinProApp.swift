@@ -46,7 +46,9 @@ struct RoundRobinProApp: App {
                 set: { newValue in if !newValue { errorMessage = nil } }
             )) {
                 // A single "OK" button to dismiss the alert.
-                Button("OK", role: .cancel) { }
+                Button("OK", role: .cancel) {
+                    // No action needed - .cancel role automatically dismisses the alert and errorMessage binding handles state
+                }
             } message: {
                 // Display the error message or a fallback string.
                 Text(errorMessage ?? "An unknown error occurred.")

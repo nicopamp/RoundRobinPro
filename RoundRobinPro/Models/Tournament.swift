@@ -178,91 +178,152 @@ extension Tournament {
     }
 }
 
-// Generates pairings for a round using the circle method.
+private struct ScheduleConfig {
+    let workingTeams: [Tournament.Team]
+    let totalTeams: Int
+    let idealRounds: Int
+    let matchesPerRound: Int
+    let availableCourts: Int
+    
+    init(teams: [Tournament.Team], availableCourts: Int) {
+        var workingTeams = teams
+        // Add a "Bye" if the number of teams is odd
+        if teams.count % 2 != 0 {
+            workingTeams.append(Tournament.Team(name: "Bye"))
+        }
+        
+        self.workingTeams = workingTeams
+        self.totalTeams = workingTeams.count
+        self.idealRounds = workingTeams.count - 1
+        self.matchesPerRound = workingTeams.count / 2
+        self.availableCourts = availableCourts
+    }
+}
+
+private struct RoundPairings {
+    let realPairings: [(Int, Int)]
+    let byePairings: [(Int, Int)]
+}
+
+// Generates pairings for a round using the circle method
 private func generateRoundPairings(indices: [Int], matchesPerRound: Int, idealRound: Int) -> [(Int, Int)] {
     var pairings: [(Int, Int)] = []
     let n = indices.count
-    for i in 0..<matchesPerRound {
-        let first = (i == 0) ? indices[0] : indices[i]
-        let second = (i == 0) ? indices[n - 1] : indices[n - 1 - i]
-        pairings.append(idealRound % 2 == 0 ? (first, second) : (second, first))
+    
+    // First pairing is always between first and last indices
+    pairings.append(idealRound % 2 == 0 ? (indices[0], indices[n - 1]) : (indices[n - 1], indices[0]))
+    
+    // Generate remaining pairings
+    for i in 1..<matchesPerRound {
+        pairings.append(idealRound % 2 == 0 ? (indices[i], indices[n - 1 - i]) : (indices[n - 1 - i], indices[i]))
     }
+    
     return pairings
 }
 
-// Rotates the pairing array by a given shift.
-private func rotatePairings(_ pairings: [(Int, Int)], shift: Int) -> [(Int, Int)] {
-    return Array(pairings[shift...] + pairings[..<shift])
+// Separates pairings into real matches and bye matches
+private func separatePairings(_ pairings: [(Int, Int)], teams: [Tournament.Team]) -> RoundPairings {
+    var realPairings: [(Int, Int)] = []
+    var byePairings: [(Int, Int)] = []
+    
+    for pairing in pairings {
+        let teamA = teams[pairing.0]
+        let teamB = teams[pairing.1]
+        
+        if teamA.name != "Bye" && teamB.name != "Bye" {
+            realPairings.append(pairing)
+        } else {
+            byePairings.append(pairing)
+        }
+    }
+    
+    return RoundPairings(realPairings: realPairings, byePairings: byePairings)
+}
+
+// Creates matches for a session of games
+private func createSessionMatches(
+    sessionPairings: [(Int, Int)],
+    teams: [Tournament.Team],
+    round: Int,
+    availableCourts: Int
+) -> [Tournament.Match] {
+    var matches: [Tournament.Match] = []
+    var courtIndexForRealMatches = 0
+    
+    for pairing in sessionPairings {
+        var teamA = teams[pairing.0]
+        var teamB = teams[pairing.1]
+        
+        // Ensure bye team is always team1 for consistency
+        if teamA.name == "Bye" && teamB.name != "Bye" {
+            swap(&teamA, &teamB)
+        }
+        
+        let isByeMatch = (teamA.name == "Bye" || teamB.name == "Bye")
+        let courtNumber = isByeMatch ? 0 : (courtIndexForRealMatches % availableCourts) + 1
+        
+        if !isByeMatch {
+            courtIndexForRealMatches += 1
+        }
+        
+        matches.append(Tournament.Match(
+            team1: teamA,
+            team2: teamB,
+            courtNumber: courtNumber,
+            round: round
+        ))
+    }
+    
+    return matches
 }
 
 func generateBalancedSchedule(teams: [Tournament.Team], availableCourts: Int) -> [Tournament.Match] {
-    // Return an empty schedule if no teams are provided.
     guard !teams.isEmpty else { return [] }
     
-    var workingTeams = teams
-    // Add a "Bye" if the number of teams is odd.
-    if workingTeams.count % 2 != 0 {
-        workingTeams.append(Tournament.Team(name: "Bye"))
-    }
-    
-    let n = workingTeams.count
-    let idealRounds = n - 1
-    let matchesPerRound = n / 2
+    let config = ScheduleConfig(teams: teams, availableCourts: availableCourts)
     var schedule: [Tournament.Match] = []
-    var indices = Array(0..<n)
+    var indices = Array(0..<config.totalTeams)
     var actualRoundCounter = 1
     
-    for idealRound in 0..<idealRounds {
-        let pairings = generateRoundPairings(indices: indices, matchesPerRound: matchesPerRound, idealRound: idealRound)
-        let shift = idealRound % matchesPerRound
-        let shiftedPairings = rotatePairings(pairings, shift: shift)
+    for idealRound in 0..<config.idealRounds {
+        var pairings = generateRoundPairings(indices: indices, matchesPerRound: config.matchesPerRound, idealRound: idealRound)
         
-        // Separate real matches and bye matches.
-        let realPairings = shiftedPairings.filter { pairing in
-            let teamA = workingTeams[pairing.0]
-            let teamB = workingTeams[pairing.1]
-            return teamA.name != "Bye" && teamB.name != "Bye"
-        }
-        let byePairings = shiftedPairings.filter { pairing in
-            let teamA = workingTeams[pairing.0]
-            let teamB = workingTeams[pairing.1]
-            return teamA.name == "Bye" || teamB.name == "Bye"
+        // Rotate pairings if needed
+        if idealRound % config.matchesPerRound != 0 {
+            let shift = idealRound % config.matchesPerRound
+            pairings = Array(pairings[shift...] + pairings[..<shift])
         }
         
-        let sessionCount = realPairings.isEmpty ? 0 : Int(ceil(Double(realPairings.count) / Double(availableCourts)))
-        let actualSessions = max(sessionCount, byePairings.isEmpty ? 0 : 1)
+        let roundPairings = separatePairings(pairings, teams: config.workingTeams)
         
+        // Calculate number of sessions needed
+        let sessionCount = roundPairings.realPairings.isEmpty ? 0 : Int(ceil(Double(roundPairings.realPairings.count) / Double(config.availableCourts)))
+        let actualSessions = max(sessionCount, roundPairings.byePairings.isEmpty ? 0 : 1)
+        
+        // Process each session
         for session in 0..<actualSessions {
-            let startIndex = session * availableCourts
-            let endIndex = min(startIndex + availableCourts, realPairings.count)
-            let sessionRealPairings = Array(realPairings[startIndex..<endIndex])
+            let startIndex = session * config.availableCourts
+            let endIndex = min(startIndex + config.availableCourts, roundPairings.realPairings.count)
+            let sessionRealPairings = Array(roundPairings.realPairings[startIndex..<endIndex])
             
-            var sessionPairings: [(Int, Int)] = []
-            if session == 0 {
-                sessionPairings.append(contentsOf: byePairings)
-            }
+            var sessionPairings = session == 0 ? roundPairings.byePairings : []
             sessionPairings.append(contentsOf: sessionRealPairings)
             
-            var courtIndexForRealMatches = 0
-            for pairing in sessionPairings {
-                var teamA = workingTeams[pairing.0]
-                var teamB = workingTeams[pairing.1]
-                if teamA.name == "Bye" && teamB.name != "Bye" {
-                    swap(&teamA, &teamB)
-                }
-                let isByeMatch = (teamA.name == "Bye" || teamB.name == "Bye")
-                let courtNumber = isByeMatch ? 0 : (courtIndexForRealMatches % availableCourts) + 1
-                if !isByeMatch { courtIndexForRealMatches += 1 }
-                
-                let match = Tournament.Match(team1: teamA, team2: teamB, courtNumber: courtNumber, round: actualRoundCounter)
-                schedule.append(match)
-            }
+            let sessionMatches = createSessionMatches(
+                sessionPairings: sessionPairings,
+                teams: config.workingTeams,
+                round: actualRoundCounter,
+                availableCourts: config.availableCourts
+            )
+            
+            schedule.append(contentsOf: sessionMatches)
+            
             if !sessionRealPairings.isEmpty {
                 actualRoundCounter += 1
             }
         }
         
-        // Rotate indices: move last element to position 1.
+        // Rotate indices: move last element to position 1
         let last = indices.removeLast()
         indices.insert(last, at: 1)
     }

@@ -74,7 +74,9 @@ struct NewTournamentSheet: View {
                 get: { errorMessage != nil },
                 set: { if !$0 { errorMessage = nil } }
             )) {
-                Button("OK", role: .cancel) { }
+                Button("OK", role: .cancel) {
+                    // No action needed - .cancel role automatically dismisses the alert and errorMessage binding handles state reset
+                }
             } message: {
                 if let errorMessage = errorMessage {
                     Text(errorMessage)
