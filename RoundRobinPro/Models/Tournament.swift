@@ -173,6 +173,37 @@ extension Tournament {
 
 extension Tournament {
     struct Match: Identifiable, CustomStringConvertible, Codable {
+        struct Config {
+            let id: UUID
+            let team1: Team
+            let team2: Team
+            let courtNumber: Int
+            let round: Int
+            let isCompleted: Bool
+            let team1Score: Int
+            let team2Score: Int
+            
+            init(
+                id: UUID = UUID(),
+                team1: Team,
+                team2: Team,
+                courtNumber: Int,
+                round: Int,
+                isCompleted: Bool = false,
+                team1Score: Int = 0,
+                team2Score: Int = 0
+            ) {
+                self.id = id
+                self.team1 = team1
+                self.team2 = team2
+                self.courtNumber = courtNumber
+                self.round = round
+                self.isCompleted = isCompleted
+                self.team1Score = team1Score
+                self.team2Score = team2Score
+            }
+        }
+        
         let id: UUID
         var team1: Team
         var team2: Team
@@ -195,15 +226,37 @@ extension Tournament {
             return "Round \(round), Court \(courtNumber): \(team1.name) vs. \(team2.name)"
         }
         
-        init(id: UUID = UUID(), team1: Team, team2: Team, courtNumber: Int, round: Int, isCompleted: Bool = false, team1Score: Int = 0, team2Score: Int = 0) {
-            self.id = id
-            self.team1 = team1
-            self.team2 = team2
-            self.team1Score = team1Score
-            self.team2Score = team2Score
-            self.courtNumber = courtNumber
-            self.round = round
-            self.isCompleted = isCompleted
+        init(config: Config) {
+            self.id = config.id
+            self.team1 = config.team1
+            self.team2 = config.team2
+            self.team1Score = config.team1Score
+            self.team2Score = config.team2Score
+            self.courtNumber = config.courtNumber
+            self.round = config.round
+            self.isCompleted = config.isCompleted
+        }
+        
+        init(
+            id: UUID = UUID(),
+            team1: Team,
+            team2: Team,
+            courtNumber: Int,
+            round: Int,
+            isCompleted: Bool = false,
+            team1Score: Int = 0,
+            team2Score: Int = 0
+        ) {
+            self.init(config: Config(
+                id: id,
+                team1: team1,
+                team2: team2,
+                courtNumber: courtNumber,
+                round: round,
+                isCompleted: isCompleted,
+                team1Score: team1Score,
+                team2Score: team2Score
+            ))
         }
     }
 }
@@ -304,12 +357,12 @@ private func createSessionMatches(
             courtIndexForRealMatches += 1
         }
         
-        matches.append(Tournament.Match(
+        matches.append(Tournament.Match(config: Tournament.Match.Config(
             team1: teamA,
             team2: teamB,
             courtNumber: courtNumber,
             round: round
-        ))
+        )))
     }
     
     return matches
@@ -405,30 +458,30 @@ extension Tournament {
                 title: "Nationals 2025",
                 teams: ["Team Alpha", "Team Bravo", "Team Charlie", "Team Delta"],
                 matches: [
-                    Tournament.Match(
-                        team1: Tournament.Team(name: "Team Alpha"),
-                        team2: Tournament.Team(name: "Team Bravo"),
+                    Match(config: Match.Config(
+                        team1: Team(name: "Team Alpha"),
+                        team2: Team(name: "Team Bravo"),
                         courtNumber: 1,
                         round: 1
-                    ),
-                    Tournament.Match(
-                        team1: Tournament.Team(name: "Team Charlie"),
-                        team2: Tournament.Team(name: "Team Delta"),
+                    )),
+                    Match(config: Match.Config(
+                        team1: Team(name: "Team Charlie"),
+                        team2: Team(name: "Team Delta"),
                         courtNumber: 1,
                         round: 2
-                    ),
-                    Tournament.Match(
-                        team1: Tournament.Team(name: "Team Alpha"),
-                        team2: Tournament.Team(name: "Team Charlie"),
+                    )),
+                    Match(config: Match.Config(
+                        team1: Team(name: "Team Alpha"),
+                        team2: Team(name: "Team Charlie"),
                         courtNumber: 1,
                         round: 3
-                    ),
-                    Tournament.Match(
-                        team1: Tournament.Team(name: "Team Bravo"),
-                        team2: Tournament.Team(name: "Team Delta"),
+                    )),
+                    Match(config: Match.Config(
+                        team1: Team(name: "Team Bravo"),
+                        team2: Team(name: "Team Delta"),
                         courtNumber: 1,
                         round: 4
-                    )
+                    ))
                 ],
                 courts: 1
             )
@@ -438,30 +491,30 @@ extension Tournament {
                 title: "Regionals 2025",
                 teams: ["Team Echo", "Team Foxtrot", "Team Golf", "Team Hotel"],
                 matches: [
-                    Tournament.Match(
-                        team1: Tournament.Team(name: "Team Echo"),
-                        team2: Tournament.Team(name: "Team Foxtrot"),
+                    Match(config: Match.Config(
+                        team1: Team(name: "Team Echo"),
+                        team2: Team(name: "Team Foxtrot"),
                         courtNumber: 1,
                         round: 1
-                    ),
-                    Tournament.Match(
-                        team1: Tournament.Team(name: "Team Golf"),
-                        team2: Tournament.Team(name: "Team Hotel"),
+                    )),
+                    Match(config: Match.Config(
+                        team1: Team(name: "Team Golf"),
+                        team2: Team(name: "Team Hotel"),
                         courtNumber: 2,
                         round: 1
-                    ),
-                    Tournament.Match(
-                        team1: Tournament.Team(name: "Team Echo"),
-                        team2: Tournament.Team(name: "Team Golf"),
+                    )),
+                    Match(config: Match.Config(
+                        team1: Team(name: "Team Echo"),
+                        team2: Team(name: "Team Golf"),
                         courtNumber: 1,
                         round: 2
-                    ),
-                    Tournament.Match(
-                        team1: Tournament.Team(name: "Team Foxtrot"),
-                        team2: Tournament.Team(name: "Team Hotel"),
+                    )),
+                    Match(config: Match.Config(
+                        team1: Team(name: "Team Foxtrot"),
+                        team2: Team(name: "Team Hotel"),
                         courtNumber: 2,
                         round: 2
-                    )
+                    ))
                 ],
                 courts: 2
             )
@@ -471,24 +524,24 @@ extension Tournament {
                 title: "District 2025",
                 teams: ["Team India", "Team Juliett", "Team Kilo"],
                 matches: [
-                    Tournament.Match(
-                        team1: Tournament.Team(name: "Team India"),
-                        team2: Tournament.Team(name: "Team Juliett"),
+                    Match(config: Match.Config(
+                        team1: Team(name: "Team India"),
+                        team2: Team(name: "Team Juliett"),
                         courtNumber: 1,
                         round: 1
-                    ),
-                    Tournament.Match(
-                        team1: Tournament.Team(name: "Team India"),
-                        team2: Tournament.Team(name: "Team Kilo"),
+                    )),
+                    Match(config: Match.Config(
+                        team1: Team(name: "Team India"),
+                        team2: Team(name: "Team Kilo"),
                         courtNumber: 1,
                         round: 2
-                    ),
-                    Tournament.Match(
-                        team1: Tournament.Team(name: "Team Juliett"),
-                        team2: Tournament.Team(name: "Team Kilo"),
+                    )),
+                    Match(config: Match.Config(
+                        team1: Team(name: "Team Juliett"),
+                        team2: Team(name: "Team Kilo"),
                         courtNumber: 1,
                         round: 3
-                    )
+                    ))
                 ],
                 courts: 1
             )
