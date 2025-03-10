@@ -50,12 +50,12 @@ else
     exit 1
 fi
 
-if [ -f "coverage/coverage.xml" ]; then
+if [ -f "coverage.xml" ]; then
     echo "✓ coverage.xml created successfully"
-    echo "File location: $(pwd)/coverage/coverage.xml"
+    echo "File location: $(pwd)/coverage.xml"
     # Print the first few lines of the coverage file to verify format
     echo "Coverage file contents:"
-    head -n 10 coverage/coverage.xml
+    head -n 10 coverage.xml
 else
     echo "✗ Failed to create coverage.xml"
     exit 1
