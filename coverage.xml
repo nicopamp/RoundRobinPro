@@ -1,0 +1,237 @@
+/Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/Tests/TournamentTests.swift:
+    1|       |//
+    2|       |//  TournamentTests.swift
+    3|       |//  RoundRobinProTests
+    4|       |//
+    5|       |//  Created by Nico Pampaloni on 2/8/25.
+    6|       |//
+    7|       |
+    8|       |import XCTest
+    9|       |@testable import RoundRobinPro
+   10|       |
+   11|       |final class TournamentTests: XCTestCase {
+   12|       |    // MARK: - Setup
+   13|       |    
+   14|       |    private var tournament: Tournament?
+   15|       |    
+   16|      9|    override func setUp() {
+   17|      9|        super.setUp()
+   18|      9|        tournament = Tournament(
+   19|      9|            title: "Test Tournament",
+   20|      9|            teams: ["Team A", "Team B", "Team C"],
+   21|      9|            courts: 1
+   22|      9|        )
+   23|      9|    }
+   24|       |    
+   25|      9|    override func tearDown() {
+   26|      9|        tournament = nil
+   27|      9|        super.tearDown()
+   28|      9|    }
+   29|       |    
+   30|       |    // MARK: - Initialization Tests
+   31|       |    
+   32|      1|    func testInitialization() {
+   33|      1|        guard let tournament = tournament else {
+   34|      0|            XCTFail("Tournament should not be nil")
+   35|      0|            return
+   36|      1|        }
+   37|      1|        
+   38|      1|        XCTAssertEqual(tournament.title, "Test Tournament")
+   39|      1|        XCTAssertEqual(tournament.teams.count, 3)
+   40|      1|        XCTAssertEqual(tournament.availableCourts, 1)
+   41|      1|        XCTAssertEqual(tournament.state, .setup)
+   42|      1|        XCTAssertTrue(tournament.schedule.isEmpty)
+   43|      1|    }
+   44|       |    
+   45|      1|    func testEmptyTournament() {
+   46|      1|        let empty = Tournament.emptyTournament
+   47|      1|        XCTAssertTrue(empty.title.isEmpty)
+   48|      1|        XCTAssertTrue(empty.teams.isEmpty)
+   49|      1|        XCTAssertEqual(empty.availableCourts, 1)
+   50|      1|        XCTAssertEqual(empty.state, .setup)
+   51|      1|        XCTAssertTrue(empty.schedule.isEmpty)
+   52|      1|    }
+   53|       |    
+   54|       |    // MARK: - Computed Properties Tests
+   55|       |    
+   56|      1|    func testCourtsAsDouble() {
+   57|      1|        guard var tournament = tournament else {
+   58|      0|            XCTFail("Tournament should not be nil")
+   59|      0|            return
+   60|      1|        }
+   61|      1|        
+   62|      1|        tournament.courtsAsDouble = 2.5
+   63|      1|        XCTAssertEqual(tournament.availableCourts, 2)
+   64|      1|        
+   65|      1|        tournament.courtsAsDouble = 0.5
+   66|      1|        XCTAssertEqual(tournament.availableCourts, 1) // Should enforce minimum of 1
+   67|      1|    }
+   68|       |    
+   69|      1|    func testActiveTeams() {
+   70|      1|        let teams = ["Team A", "Team B", "Team C", "Bye"]
+   71|      1|        let tournament = Tournament(title: "Test", teams: teams, courts: 1)
+   72|      1|        XCTAssertEqual(tournament.activeTeams.count, 3)
+   73|      3|        XCTAssertFalse(tournament.activeTeams.contains { $0.name == "Bye" })
+   74|      1|    }
+   75|       |    
+   76|       |    // MARK: - State Management Tests
+   77|       |    
+   78|      1|    func testUpdateStateSetup() {
+   79|      1|        guard var tournament = tournament else {
+   80|      0|            XCTFail("Tournament should not be nil")
+   81|      0|            return
+   82|      1|        }
+   83|      1|        
+   84|      1|        tournament.updateState()
+   85|      1|        XCTAssertEqual(tournament.state, .setup)
+   86|      1|    }
+   87|       |    
+   88|      1|    func testUpdateStateInProgress() {
+   89|      1|        guard var tournament = tournament else {
+   90|      0|            XCTFail("Tournament should not be nil")
+   91|      0|            return
+   92|      1|        }
+   93|      1|        
+   94|      1|        let match = Tournament.Match(
+   95|      1|            team1: tournament.teams[0],
+   96|      1|            team2: tournament.teams[1],
+   97|      1|            courtNumber: 1,
+   98|      1|            round: 1
+   99|      1|        )
+  100|      1|        tournament.schedule = [match]
+  101|      1|        tournament.updateState()
+  102|      1|        
+  103|      1|        if case .inProgress(let completed, let total) = tournament.state {
+  104|      1|            XCTAssertEqual(completed, 0)
+  105|      1|            XCTAssertEqual(total, 1)
+  106|      1|        } else {
+  107|      0|            XCTFail("Expected .inProgress state")
+  108|      0|        }
+  109|      1|    }
+  110|       |    
+  111|      1|    func testUpdateStateCompleted() {
+  112|      1|        guard var tournament = tournament else {
+  113|      0|            XCTFail("Tournament should not be nil")
+  114|      0|            return
+  115|      1|        }
+  116|      1|        
+  117|      1|        // Create a complete schedule with bye matches
+  118|      1|        let teamA = tournament.teams[0]
+  119|      1|        let teamB = tournament.teams[1]
+  120|      1|        let teamC = tournament.teams[2]
+  121|      1|        
+  122|      1|        let match1 = Tournament.Match(
+  123|      1|            team1: teamA,
+  124|      1|            team2: teamB,
+  125|      1|            courtNumber: 1,
+  126|      1|            round: 1,
+  127|      1|            isCompleted: true,
+  128|      1|            team1Score: 21,
+  129|      1|            team2Score: 19
+  130|      1|        )
+  131|      1|        
+  132|      1|        let match2 = Tournament.Match(
+  133|      1|            team1: teamB,
+  134|      1|            team2: teamC,
+  135|      1|            courtNumber: 1,
+  136|      1|            round: 2,
+  137|      1|            isCompleted: true,
+  138|      1|            team1Score: 21,
+  139|      1|            team2Score: 19
+  140|      1|        )
+  141|      1|        
+  142|      1|        let match3 = Tournament.Match(
+  143|      1|            team1: teamC,
+  144|      1|            team2: teamA,
+  145|      1|            courtNumber: 1,
+  146|      1|            round: 3,
+  147|      1|            isCompleted: true,
+  148|      1|            team1Score: 21,
+  149|      1|            team2Score: 19
+  150|      1|        )
+  151|      1|        
+  152|      1|        tournament.schedule = [match1, match2, match3]
+  153|      1|        tournament.updateState()
+  154|      1|        
+  155|      1|        if case .completed(let winner, let standings) = tournament.state {
+  156|      1|            XCTAssertNotNil(winner)
+  157|      1|            XCTAssertEqual(standings.count, 3)
+  158|      1|            XCTAssertEqual(standings[0].wins, 1)
+  159|      1|            XCTAssertEqual(standings[1].wins, 1)
+  160|      1|            XCTAssertEqual(standings[2].wins, 1)
+  161|      1|        } else {
+  162|      0|            XCTFail("Expected .completed state")
+  163|      0|        }
+  164|      1|    }
+  165|       |    
+  166|       |    // MARK: - Schedule Generation Tests
+  167|       |    
+  168|      1|    func testGenerateBalancedSchedule() {
+  169|      1|        guard var tournament = tournament else {
+  170|      0|            XCTFail("Tournament should not be nil")
+  171|      0|            return
+  172|      1|        }
+  173|      1|        
+  174|      1|        tournament.updateSchedule()
+  175|      1|        XCTAssertFalse(tournament.schedule.isEmpty)
+  176|      1|        
+  177|      1|        // Verify each team plays against every other team
+  178|      1|        let teamA = tournament.teams[0]
+  179|      1|        let teamB = tournament.teams[1]
+  180|      1|        let teamC = tournament.teams[2]
+  181|      1|        
+  182|      6|        let matchesWithTeamA = tournament.schedule.filter { $0.team1 == teamA || $0.team2 == teamA }
+  183|      1|        XCTAssertEqual(matchesWithTeamA.count, 3) // 2 regular matches + 1 bye match
+  184|      1|        
+  185|      6|        let matchesWithTeamB = tournament.schedule.filter { $0.team1 == teamB || $0.team2 == teamB }
+  186|      1|        XCTAssertEqual(matchesWithTeamB.count, 3) // 2 regular matches + 1 bye match
+  187|      1|        
+  188|      6|        let matchesWithTeamC = tournament.schedule.filter { $0.team1 == teamC || $0.team2 == teamC }
+  189|      1|        XCTAssertEqual(matchesWithTeamC.count, 3) // 2 regular matches + 1 bye match
+  190|      1|    }
+  191|       |    
+  192|      1|    func testGenerateBalancedScheduleWithOddTeams() {
+  193|      1|        var tournament = Tournament(
+  194|      1|            title: "Test",
+  195|      1|            teams: ["Team A", "Team B", "Team C", "Team D", "Team E"],
+  196|      1|            courts: 1
+  197|      1|        )
+  198|      1|        tournament.updateSchedule()
+  199|      1|        
+  200|      1|        // Verify bye matches are created
+  201|     15|        let byeMatches = tournament.schedule.filter { $0.isByeMatch }
+  202|      1|        XCTAssertFalse(byeMatches.isEmpty)
+  203|      1|        
+  204|      1|        // Verify each team gets exactly one bye match
+  205|      5|        let teams = tournament.teams.filter { $0.name != "Bye" }
+  206|      5|        for team in teams {
+  207|     25|            let byeMatchesForTeam = byeMatches.filter { $0.team1 == team || $0.team2 == team }
+  208|      5|            XCTAssertEqual(byeMatchesForTeam.count, 1, "Team \(team.name) should have exactly one bye match")
+  209|      5|        }
+  210|      1|        
+  211|      1|        // Verify bye matches are properly formatted
+  212|      5|        for match in byeMatches {
+  213|      5|            XCTAssertTrue(match.team1.name == "Bye" || match.team2.name == "Bye", "Bye match should have 'Bye' as one of the teams")
+  214|      5|            XCTAssertEqual(match.courtNumber, 0, "Bye matches should have court number 0")
+  215|      5|        }
+  216|      1|    }
+  217|       |} 
+
+/Users/nico/Development/iOS/RoundRobinPro/RoundRobinProTests/RoundRobinProTests.swift:
+    1|       |//
+    2|       |//  RoundRobinProTests.swift
+    3|       |//  RoundRobinProTests
+    4|       |//
+    5|       |//  Created by Nico Pampaloni on 3/10/25.
+    6|       |//
+    7|       |
+    8|       |import Testing
+    9|       |
+   10|       |struct RoundRobinProTests {
+   11|       |
+   12|      1|    @Test func example() async throws {
+   13|      1|        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
+   14|      1|    }
+   15|       |
+   16|       |}
+
