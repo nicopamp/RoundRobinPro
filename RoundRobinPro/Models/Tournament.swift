@@ -28,10 +28,25 @@ struct Tournament: Identifiable, Codable {
     
     // MARK: - Types
     
-    enum TournamentState: Codable {
+    enum TournamentState: Codable, Equatable {
         case setup
         case inProgress(completedMatches: Int, totalMatches: Int)
         case completed(winner: Team?, finalStandings: [Team])
+        
+        static func == (lhs: TournamentState, rhs: TournamentState) -> Bool {
+            switch (lhs, rhs) {
+            case (.setup, .setup):
+                return true
+            case (.inProgress(let lhsCompleted, let lhsTotal),
+                  .inProgress(let rhsCompleted, let rhsTotal)):
+                return lhsCompleted == rhsCompleted && lhsTotal == rhsTotal
+            case (.completed(let lhsWinner, let lhsStandings),
+                  .completed(let rhsWinner, let rhsStandings)):
+                return lhsWinner == rhsWinner && lhsStandings == rhsStandings
+            default:
+                return false
+            }
+        }
         
         var isCompleted: Bool {
             if case .completed(_, _) = self {
@@ -72,13 +87,12 @@ struct Tournament: Identifiable, Codable {
         let totalMatches = actualMatches.count
         let completedMatches = actualMatches.filter(\.isCompleted).count
         
-        switch completedMatches {
-        case 0:
+        if totalMatches == 0 {
             state = .setup
-        case totalMatches:
+        } else if completedMatches == totalMatches {
             let standings = calculateStandings(from: actualMatches)
             state = .completed(winner: standings.first, finalStandings: standings)
-        default:
+        } else {
             state = .inProgress(completedMatches: completedMatches, totalMatches: totalMatches)
         }
     }
