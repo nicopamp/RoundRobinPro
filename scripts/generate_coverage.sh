@@ -37,9 +37,9 @@ xcodebuild test \
 echo "Generating coverage report..."
 xcrun xccov view --report --json coverage/coverage.xcresult > coverage/coverage.json
 
-# Convert to SonarQube format
+# Convert to SonarQube format using the generic converter
 echo "Converting to SonarQube format..."
-xcrun xccov view --report --xml coverage/coverage.xcresult | sed '1s/^/<?xml version="1.0" encoding="UTF-8"?>\n/' > coverage/coverage.xml
+./scripts/xccov-to-sonarqube-generic.sh coverage/coverage.xcresult > coverage/coverage.xml
 
 # Verify files were created
 echo "Verifying coverage files..."

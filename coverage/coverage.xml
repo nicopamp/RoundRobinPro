@@ -1,230 +1,1039 @@
-Name                                                                                                                   Coverage         
----------------------------------------------------------------------------------------------------------------------- ---------------- 
-RoundRobinPro.app                                                                                                      9.74% (216/2217) 
-    /Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/RoundRobinProApp.swift                                     78.40% (98/125)  
-        variable initialization expression of RoundRobinProApp._store                                                  100.00% (1/1)    
-        RoundRobinProApp.body.getter                                                                                   100.00% (40/40)  
-        closure #1 in RoundRobinProApp.body.getter                                                                     100.00% (38/38)  
-        closure #1 in closure #1 in RoundRobinProApp.body.getter                                                       0.00% (0/12)     
-        closure #1 in closure #1 in closure #1 in RoundRobinProApp.body.getter                                         0.00% (0/9)      
-        closure #2 in closure #1 in RoundRobinProApp.body.getter                                                       77.78% (7/9)     
-        closure #3 in closure #1 in RoundRobinProApp.body.getter                                                       100.00% (1/1)    
-        closure #4 in closure #1 in RoundRobinProApp.body.getter                                                       0.00% (0/1)      
-        closure #5 in closure #1 in RoundRobinProApp.body.getter                                                       100.00% (6/6)    
-        closure #1 in closure #5 in closure #1 in RoundRobinProApp.body.getter                                         0.00% (0/3)      
-        closure #6 in closure #1 in RoundRobinProApp.body.getter                                                       100.00% (4/4)    
-        implicit closure #1 in closure #6 in closure #1 in RoundRobinProApp.body.getter                                100.00% (1/1)    
-    /Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/TrailingIconLabelStyle.swift                               0.00% (0/11)     
-        TrailingIconLabelStyle.makeBody(configuration:)                                                                0.00% (0/6)      
-        closure #1 in TrailingIconLabelStyle.makeBody(configuration:)                                                  0.00% (0/4)      
-        static LabelStyle<>.trailingIcon.getter                                                                        0.00% (0/1)      
-    /Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/Models/TournamentStore.swift                               23.15% (25/108)  
-        variable initialization expression of TournamentStore._tournaments                                             100.00% (1/1)    
-        variable initialization expression of TournamentStore.queue                                                    100.00% (1/1)    
-        static TournamentStore.fileURL()                                                                               100.00% (7/7)    
-        TournamentStore.StoreError.errorDescription.getter                                                             0.00% (0/12)     
-        TournamentStore.validate(_:)                                                                                   0.00% (0/11)     
-        TournamentStore.load()                                                                                         100.00% (10/10)  
-        closure #1 in TournamentStore.load()                                                                           85.71% (6/7)     
-        TournamentStore.save(tournaments:)                                                                             0.00% (0/14)     
-        closure #1 in TournamentStore.save(tournaments:)                                                               0.00% (0/12)     
-        closure #1 in closure #1 in TournamentStore.save(tournaments:)                                                 0.00% (0/10)     
-        TournamentStore.add(_:)                                                                                        0.00% (0/4)      
-        TournamentStore.update(_:)                                                                                     0.00% (0/7)      
-        closure #1 in TournamentStore.update(_:)                                                                       0.00% (0/1)      
-        TournamentStore.remove(_:)                                                                                     0.00% (0/3)      
-        closure #1 in TournamentStore.remove(_:)                                                                       0.00% (0/1)      
-        TournamentStore.tournament(withId:)                                                                            0.00% (0/3)      
-        closure #1 in TournamentStore.tournament(withId:)                                                              0.00% (0/1)      
-        TournamentStore.removeAll()                                                                                    0.00% (0/3)      
-    /Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/NewTournamentSheet.swift                                   0.00% (0/293)    
-        variable initialization expression of NewTournamentSheet._title                                                0.00% (0/1)      
-        variable initialization expression of NewTournamentSheet._teams                                                0.00% (0/1)      
-        variable initialization expression of NewTournamentSheet._availableCourts                                      0.00% (0/1)      
-        NewTournamentSheet.body.getter                                                                                 0.00% (0/69)     
-        closure #1 in NewTournamentSheet.body.getter                                                                   0.00% (0/67)     
-        closure #1 in closure #1 in NewTournamentSheet.body.getter                                                     0.00% (0/27)     
-        closure #1 in closure #1 in closure #1 in NewTournamentSheet.body.getter                                       0.00% (0/6)      
-        closure #2 in closure #1 in closure #1 in NewTournamentSheet.body.getter                                       0.00% (0/18)     
-        closure #1 in closure #2 in closure #1 in closure #1 in NewTournamentSheet.body.getter                         0.00% (0/3)      
-        closure #2 in closure #2 in closure #1 in closure #1 in NewTournamentSheet.body.getter                         0.00% (0/3)      
-        closure #3 in closure #2 in closure #1 in closure #1 in NewTournamentSheet.body.getter                         0.00% (0/3)      
-        closure #4 in closure #2 in closure #1 in closure #1 in NewTournamentSheet.body.getter                         0.00% (0/6)      
-        closure #1 in closure #4 in closure #2 in closure #1 in closure #1 in NewTournamentSheet.body.getter           0.00% (0/4)      
-        closure #2 in closure #1 in NewTournamentSheet.body.getter                                                     0.00% (0/25)     
-        closure #1 in closure #2 in closure #1 in NewTournamentSheet.body.getter                                       0.00% (0/5)      
-        closure #1 in closure #1 in closure #2 in closure #1 in NewTournamentSheet.body.getter                         0.00% (0/3)      
-        closure #2 in closure #2 in closure #1 in NewTournamentSheet.body.getter                                       0.00% (0/18)     
-        closure #1 in closure #2 in closure #2 in closure #1 in NewTournamentSheet.body.getter                         0.00% (0/15)     
-        closure #1 in closure #1 in closure #2 in closure #2 in closure #1 in NewTournamentSheet.body.getter           0.00% (0/1)      
-        implicit closure #1 in closure #2 in closure #2 in closure #1 in NewTournamentSheet.body.getter                0.00% (0/1)      
-        closure #2 in implicit closure #1 in closure #2 in closure #2 in closure #1 in NewTournamentSheet.body.getter  0.00% (0/1)      
-        closure #3 in closure #1 in NewTournamentSheet.body.getter                                                     0.00% (0/1)      
-        closure #4 in closure #1 in NewTournamentSheet.body.getter                                                     0.00% (0/1)      
-        closure #5 in closure #1 in NewTournamentSheet.body.getter                                                     0.00% (0/5)      
-        closure #1 in closure #5 in closure #1 in NewTournamentSheet.body.getter                                       0.00% (0/3)      
-        closure #6 in closure #1 in NewTournamentSheet.body.getter                                                     0.00% (0/5)      
-    /Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/Models/Tournament.swift                                    0.00% (0/275)    
-        Tournament.courtsAsDouble.getter                                                                               0.00% (0/1)      
-        Tournament.courtsAsDouble.setter                                                                               0.00% (0/1)      
-        Tournament.isCompleted.getter                                                                                  0.00% (0/1)      
-        Tournament.activeTeams.getter                                                                                  0.00% (0/1)      
-        closure #1 in Tournament.activeTeams.getter                                                                    0.00% (0/1)      
-        static Tournament.TournamentState.== infix(_:_:)                                                               0.00% (0/14)     
-        implicit closure #1 in static Tournament.TournamentState.== infix(_:_:)                                        0.00% (0/1)      
-        implicit closure #2 in static Tournament.TournamentState.== infix(_:_:)                                        0.00% (0/1)      
-        Tournament.TournamentState.isCompleted.getter                                                                  0.00% (0/6)      
-        Tournament.TournamentState.progress.getter                                                                     0.00% (0/8)      
-        Tournament.init(id:title:teams:matches:courts:state:)                                                          0.00% (0/12)     
-        closure #1 in Tournament.init(id:title:teams:matches:courts:state:)                                            0.00% (0/1)      
-        Tournament.updateState()                                                                                       0.00% (0/14)     
-        closure #1 in Tournament.updateState()                                                                         0.00% (0/1)      
-        implicit closure #1 in Tournament.updateState()                                                                0.00% (0/1)      
-        Tournament.calculateStandings(from:)                                                                           0.00% (0/22)     
-        closure #1 in Tournament.calculateStandings(from:)                                                             0.00% (0/1)      
-        Tournament.Team.init(id:name:wins:losses:)                                                                     0.00% (0/6)      
-        static Tournament.Team.== infix(_:_:)                                                                          0.00% (0/3)      
-        static Tournament.emptyTournament.getter                                                                       0.00% (0/3)      
-        Tournament.Match.isByeMatch.getter                                                                             0.00% (0/3)      
-        implicit closure #1 in Tournament.Match.isByeMatch.getter                                                      0.00% (0/1)      
-        Tournament.Match.description.getter                                                                            0.00% (0/8)      
-        Tournament.Match.init(id:team1:team2:courtNumber:round:isCompleted:team1Score:team2Score:)                     0.00% (0/10)     
-        Tournament.updateSchedule()                                                                                    0.00% (0/3)      
-        ScheduleConfig.init(teams:availableCourts:)                                                                    0.00% (0/13)     
-        generateRoundPairings(indices:matchesPerRound:idealRound:)                                                     0.00% (0/14)     
-        separatePairings(_:teams:)                                                                                     0.00% (0/17)     
-        implicit closure #1 in separatePairings(_:teams:)                                                              0.00% (0/1)      
-        createSessionMatches(sessionPairings:teams:round:availableCourts:)                                             0.00% (0/30)     
-        implicit closure #1 in createSessionMatches(sessionPairings:teams:round:availableCourts:)                      0.00% (0/1)      
-        implicit closure #2 in createSessionMatches(sessionPairings:teams:round:availableCourts:)                      0.00% (0/1)      
-        processRound(pairings:config:roundCounter:)                                                                    0.00% (0/34)     
-        rotatePairingsIfNeeded(_:idealRound:matchesPerRound:)                                                          0.00% (0/6)      
-        generateBalancedSchedule(teams:availableCourts:)                                                               0.00% (0/34)     
-    /Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/DetailView.swift                                           0.00% (0/205)    
-        variable initialization expression of DetailView._isPresentingEditView                                         0.00% (0/1)      
-        DetailView.init(tournament:store:)                                                                             0.00% (0/5)      
-        DetailView.body.getter                                                                                         0.00% (0/16)     
-        closure #1 in DetailView.body.getter                                                                           0.00% (0/4)      
-        closure #2 in DetailView.body.getter                                                                           0.00% (0/6)      
-        closure #1 in closure #2 in DetailView.body.getter                                                             0.00% (0/4)      
-        closure #3 in DetailView.body.getter                                                                           0.00% (0/3)      
-        DetailView.tournamentInfoSection.getter                                                                        0.00% (0/15)     
-        closure #1 in DetailView.tournamentInfoSection.getter                                                          0.00% (0/13)     
-        closure #1 in closure #1 in DetailView.tournamentInfoSection.getter                                            0.00% (0/5)      
-        closure #2 in closure #1 in DetailView.tournamentInfoSection.getter                                            0.00% (0/5)      
-        DetailView.scheduleSection.getter                                                                              0.00% (0/20)     
-        closure #1 in DetailView.scheduleSection.getter                                                                0.00% (0/1)      
-        closure #2 in DetailView.scheduleSection.getter                                                                0.00% (0/15)     
-        closure #1 in closure #2 in DetailView.scheduleSection.getter                                                  0.00% (0/13)     
-        closure #1 in closure #1 in closure #2 in DetailView.scheduleSection.getter                                    0.00% (0/9)      
-        implicit closure #1 in closure #1 in closure #1 in closure #2 in DetailView.scheduleSection.getter             0.00% (0/1)      
-        closure #1 in closure #1 in closure #1 in closure #2 in DetailView.scheduleSection.getter                      0.00% (0/3)      
-        DetailView.matchDetailView(for:)                                                                               0.00% (0/15)     
-        closure #1 in DetailView.matchDetailView(for:)                                                                 0.00% (0/13)     
-        closure #1 in closure #1 in DetailView.matchDetailView(for:)                                                   0.00% (0/1)      
-        DetailView.editTournamentSheet.getter                                                                          0.00% (0/16)     
-        closure #1 in DetailView.editTournamentSheet.getter                                                            0.00% (0/14)     
-        closure #1 in closure #1 in DetailView.editTournamentSheet.getter                                              0.00% (0/7)      
-    /Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/MatchDetailView.swift                                      0.00% (0/296)    
-        variable initialization expression of MatchDetailView._showingAlert                                            0.00% (0/1)      
-        MatchDetailView.init(match:onScoreUpdate:)                                                                     0.00% (0/6)      
-        MatchDetailView.body.getter                                                                                    0.00% (0/52)     
-        closure #1 in MatchDetailView.body.getter                                                                      0.00% (0/42)     
-        closure #1 in closure #1 in MatchDetailView.body.getter                                                        0.00% (0/14)     
-        closure #1 in closure #1 in closure #1 in MatchDetailView.body.getter                                          0.00% (0/12)     
-        implicit closure #1 in closure #1 in closure #1 in closure #1 in MatchDetailView.body.getter                   0.00% (0/1)      
-        implicit closure #1 in closure #1 in MatchDetailView.body.getter                                               0.00% (0/1)      
-        closure #2 in closure #1 in MatchDetailView.body.getter                                                        0.00% (0/9)      
-        closure #3 in closure #1 in MatchDetailView.body.getter                                                        0.00% (0/7)      
-        implicit closure #1 in closure #3 in closure #1 in MatchDetailView.body.getter                                 0.00% (0/1)      
-        closure #1 in closure #3 in closure #1 in MatchDetailView.body.getter                                          0.00% (0/4)      
-        closure #4 in closure #1 in MatchDetailView.body.getter                                                        0.00% (0/5)      
-        closure #2 in MatchDetailView.body.getter                                                                      0.00% (0/5)      
-        closure #1 in closure #2 in MatchDetailView.body.getter                                                        0.00% (0/3)      
-        closure #3 in MatchDetailView.body.getter                                                                      0.00% (0/3)      
-        MatchDetailView.saveScores()                                                                                   0.00% (0/9)      
-        implicit closure #1 in MatchDetailView.saveScores()                                                            0.00% (0/1)      
-        ScoreRow.body.getter                                                                                           0.00% (0/38)     
-        closure #1 in ScoreRow.body.getter                                                                             0.00% (0/36)     
-        closure #1 in closure #1 in ScoreRow.body.getter                                                               0.00% (0/28)     
-        closure #1 in closure #1 in closure #1 in ScoreRow.body.getter                                                 0.00% (0/3)      
-        closure #2 in closure #1 in closure #1 in ScoreRow.body.getter                                                 0.00% (0/6)      
-        closure #3 in closure #1 in closure #1 in ScoreRow.body.getter                                                 0.00% (0/3)      
-        closure #4 in closure #1 in closure #1 in ScoreRow.body.getter                                                 0.00% (0/6)      
-    /Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/DetailEditView.swift                                       0.00% (0/206)    
-        variable initialization expression of DetailEditView._newTeamName                                              0.00% (0/1)      
-        DetailEditView.body.getter                                                                                     0.00% (0/55)     
-        closure #1 in DetailEditView.body.getter                                                                       0.00% (0/53)     
-        closure #1 in closure #1 in DetailEditView.body.getter                                                         0.00% (0/22)     
-        closure #1 in closure #1 in closure #1 in DetailEditView.body.getter                                           0.00% (0/9)      
-        closure #1 in closure #1 in closure #1 in closure #1 in DetailEditView.body.getter                             0.00% (0/3)      
-        closure #2 in closure #1 in DetailEditView.body.getter                                                         0.00% (0/29)     
-        closure #1 in closure #2 in closure #1 in DetailEditView.body.getter                                           0.00% (0/3)      
-        closure #2 in closure #2 in closure #1 in DetailEditView.body.getter                                           0.00% (0/3)      
-        closure #3 in closure #2 in closure #1 in DetailEditView.body.getter                                           0.00% (0/13)     
-        closure #1 in closure #3 in closure #2 in closure #1 in DetailEditView.body.getter                             0.00% (0/7)      
-        closure #1 in closure #1 in closure #3 in closure #2 in closure #1 in DetailEditView.body.getter               0.00% (0/5)      
-        closure #2 in closure #3 in closure #2 in closure #1 in DetailEditView.body.getter                             0.00% (0/3)      
-    /Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/EditTournamentSheet.swift                                  0.00% (0/238)    
-        EditTournamentSheet.init(tournament:isPresentingEditView:onSave:)                                              0.00% (0/10)     
-        closure #1 in EditTournamentSheet.init(tournament:isPresentingEditView:onSave:)                                0.00% (0/1)      
-        EditTournamentSheet.body.getter                                                                                0.00% (0/52)     
-        closure #1 in EditTournamentSheet.body.getter                                                                  0.00% (0/50)     
-        closure #1 in closure #1 in EditTournamentSheet.body.getter                                                    0.00% (0/27)     
-        closure #1 in closure #1 in closure #1 in EditTournamentSheet.body.getter                                      0.00% (0/6)      
-        closure #2 in closure #1 in closure #1 in EditTournamentSheet.body.getter                                      0.00% (0/18)     
-        closure #1 in closure #2 in closure #1 in closure #1 in EditTournamentSheet.body.getter                        0.00% (0/3)      
-        closure #2 in closure #2 in closure #1 in closure #1 in EditTournamentSheet.body.getter                        0.00% (0/3)      
-        closure #3 in closure #2 in closure #1 in closure #1 in EditTournamentSheet.body.getter                        0.00% (0/3)      
-        closure #4 in closure #2 in closure #1 in closure #1 in EditTournamentSheet.body.getter                        0.00% (0/6)      
-        closure #1 in closure #4 in closure #2 in closure #1 in closure #1 in EditTournamentSheet.body.getter          0.00% (0/4)      
-        closure #2 in closure #1 in EditTournamentSheet.body.getter                                                    0.00% (0/20)     
-        closure #1 in closure #2 in closure #1 in EditTournamentSheet.body.getter                                      0.00% (0/5)      
-        closure #1 in closure #1 in closure #2 in closure #1 in EditTournamentSheet.body.getter                        0.00% (0/3)      
-        closure #2 in closure #2 in closure #1 in EditTournamentSheet.body.getter                                      0.00% (0/13)     
-        closure #1 in closure #2 in closure #2 in closure #1 in EditTournamentSheet.body.getter                        0.00% (0/10)     
-        closure #1 in closure #1 in closure #2 in closure #2 in closure #1 in EditTournamentSheet.body.getter          0.00% (0/1)      
-        closure #2 in closure #1 in closure #2 in closure #2 in closure #1 in EditTournamentSheet.body.getter          0.00% (0/1)      
-        implicit closure #1 in closure #2 in closure #2 in closure #1 in EditTournamentSheet.body.getter               0.00% (0/1)      
-        closure #2 in implicit closure #1 in closure #2 in closure #2 in closure #1 in EditTournamentSheet.body.getter 0.00% (0/1)      
-    /Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/TournamentsView.swift                                      76.86% (93/121)  
-        variable initialization expression of TournamentsView._isPresentingNewTournamentView                           0.00% (0/1)      
-        TournamentsView.body.getter                                                                                    100.00% (44/44)  
-        closure #1 in TournamentsView.body.getter                                                                      100.00% (27/27)  
-        closure #1 in closure #1 in TournamentsView.body.getter                                                        0.00% (0/9)      
-        closure #1 in closure #1 in closure #1 in TournamentsView.body.getter                                          0.00% (0/4)      
-        closure #2 in closure #1 in TournamentsView.body.getter                                                        100.00% (12/12)  
-        closure #1 in closure #2 in closure #1 in TournamentsView.body.getter                                          0.00% (0/4)      
-        closure #2 in closure #2 in closure #1 in TournamentsView.body.getter                                          100.00% (6/6)    
-        closure #2 in TournamentsView.body.getter                                                                      0.00% (0/8)      
-        closure #3 in TournamentsView.body.getter                                                                      60.00% (3/5)     
-        implicit closure #1 in closure #3 in TournamentsView.body.getter                                               100.00% (1/1)    
-    /Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/MatchCardView.swift                                        0.00% (0/179)    
-        MatchCardView.body.getter                                                                                      0.00% (0/33)     
-        closure #1 in MatchCardView.body.getter                                                                        0.00% (0/21)     
-        implicit closure #1 in closure #1 in MatchCardView.body.getter                                                 0.00% (0/1)      
-        MatchCardView.matchupView.getter                                                                               0.00% (0/28)     
-        closure #1 in MatchCardView.matchupView.getter                                                                 0.00% (0/26)     
-        MatchCardView.byeView(teamName:)                                                                               0.00% (0/9)      
-        closure #1 in MatchCardView.byeView(teamName:)                                                                 0.00% (0/7)      
-        MatchCardView.matchBackground.getter                                                                           0.00% (0/12)     
-        closure #1 in MatchCardView.matchBackground.getter                                                             0.00% (0/10)     
-        MatchCardView.teamColor(for:)                                                                                  0.00% (0/10)     
-        MatchCardView.accessibilityLabel.getter                                                                        0.00% (0/11)     
-        MatchCardView.accessibilityHint.getter                                                                         0.00% (0/10)     
-        implicit closure #1 in MatchCardView.accessibilityHint.getter                                                  0.00% (0/1)      
-    /Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/TournamentCardView.swift                                   0.00% (0/160)    
-        TournamentCardView.body.getter                                                                                 0.00% (0/55)     
-        closure #1 in TournamentCardView.body.getter                                                                   0.00% (0/41)     
-        closure #1 in closure #1 in TournamentCardView.body.getter                                                     0.00% (0/25)     
-        closure #1 in closure #1 in closure #1 in TournamentCardView.body.getter                                       0.00% (0/4)      
-        closure #2 in closure #1 in closure #1 in TournamentCardView.body.getter                                       0.00% (0/4)      
-        closure #3 in closure #1 in closure #1 in TournamentCardView.body.getter                                       0.00% (0/4)      
-        closure #4 in closure #1 in closure #1 in TournamentCardView.body.getter                                       0.00% (0/4)      
-        TournamentCardView.progressTint.getter                                                                         0.00% (0/9)      
-        TournamentCardView.progressLabel.getter                                                                        0.00% (0/10)     
-        TournamentCardView.progressValueDescription.getter                                                             0.00% (0/4)      
-RoundRobinProTests.xctest                                                                                              100.00% (3/3)    
-    /Users/nico/Development/iOS/RoundRobinPro/RoundRobinProTests/RoundRobinProTests.swift                              100.00% (3/3)    
-        RoundRobinProTests.example()                                                                                   100.00% (3/3)    
-
+<coverage version="1">
+  <file path="/Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/DetailEditView.swift">
+    <lineToCover lineNumber="12" covered="false"/>
+    <lineToCover lineNumber="14" covered="false"/>
+    <lineToCover lineNumber="15" covered="false"/>
+    <lineToCover lineNumber="16" covered="false"/>
+    <lineToCover lineNumber="17" covered="false"/>
+    <lineToCover lineNumber="18" covered="false"/>
+    <lineToCover lineNumber="19" covered="false"/>
+    <lineToCover lineNumber="20" covered="false"/>
+    <lineToCover lineNumber="21" covered="false"/>
+    <lineToCover lineNumber="22" covered="false"/>
+    <lineToCover lineNumber="23" covered="false"/>
+    <lineToCover lineNumber="24" covered="false"/>
+    <lineToCover lineNumber="25" covered="false"/>
+    <lineToCover lineNumber="26" covered="false"/>
+    <lineToCover lineNumber="27" covered="false"/>
+    <lineToCover lineNumber="28" covered="false"/>
+    <lineToCover lineNumber="29" covered="false"/>
+    <lineToCover lineNumber="30" covered="false"/>
+    <lineToCover lineNumber="31" covered="false"/>
+    <lineToCover lineNumber="32" covered="false"/>
+    <lineToCover lineNumber="33" covered="false"/>
+    <lineToCover lineNumber="34" covered="false"/>
+    <lineToCover lineNumber="35" covered="false"/>
+    <lineToCover lineNumber="36" covered="false"/>
+    <lineToCover lineNumber="37" covered="false"/>
+    <lineToCover lineNumber="38" covered="false"/>
+    <lineToCover lineNumber="39" covered="false"/>
+    <lineToCover lineNumber="40" covered="false"/>
+    <lineToCover lineNumber="41" covered="false"/>
+    <lineToCover lineNumber="42" covered="false"/>
+    <lineToCover lineNumber="43" covered="false"/>
+    <lineToCover lineNumber="44" covered="false"/>
+    <lineToCover lineNumber="45" covered="false"/>
+    <lineToCover lineNumber="46" covered="false"/>
+    <lineToCover lineNumber="47" covered="false"/>
+    <lineToCover lineNumber="48" covered="false"/>
+    <lineToCover lineNumber="49" covered="false"/>
+    <lineToCover lineNumber="50" covered="false"/>
+    <lineToCover lineNumber="51" covered="false"/>
+    <lineToCover lineNumber="52" covered="false"/>
+    <lineToCover lineNumber="53" covered="false"/>
+    <lineToCover lineNumber="54" covered="false"/>
+    <lineToCover lineNumber="55" covered="false"/>
+    <lineToCover lineNumber="56" covered="false"/>
+    <lineToCover lineNumber="57" covered="false"/>
+    <lineToCover lineNumber="58" covered="false"/>
+    <lineToCover lineNumber="59" covered="false"/>
+    <lineToCover lineNumber="60" covered="false"/>
+    <lineToCover lineNumber="61" covered="false"/>
+    <lineToCover lineNumber="62" covered="false"/>
+    <lineToCover lineNumber="63" covered="false"/>
+    <lineToCover lineNumber="64" covered="false"/>
+    <lineToCover lineNumber="65" covered="false"/>
+    <lineToCover lineNumber="66" covered="false"/>
+    <lineToCover lineNumber="67" covered="false"/>
+    <lineToCover lineNumber="68" covered="false"/>
+  </file>
+  <file path="/Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/DetailView.swift">
+    <lineToCover lineNumber="13" covered="false"/>
+    <lineToCover lineNumber="16" covered="false"/>
+    <lineToCover lineNumber="17" covered="false"/>
+    <lineToCover lineNumber="18" covered="false"/>
+    <lineToCover lineNumber="19" covered="false"/>
+    <lineToCover lineNumber="20" covered="false"/>
+    <lineToCover lineNumber="22" covered="false"/>
+    <lineToCover lineNumber="23" covered="false"/>
+    <lineToCover lineNumber="24" covered="false"/>
+    <lineToCover lineNumber="25" covered="false"/>
+    <lineToCover lineNumber="26" covered="false"/>
+    <lineToCover lineNumber="27" covered="false"/>
+    <lineToCover lineNumber="28" covered="false"/>
+    <lineToCover lineNumber="29" covered="false"/>
+    <lineToCover lineNumber="30" covered="false"/>
+    <lineToCover lineNumber="31" covered="false"/>
+    <lineToCover lineNumber="32" covered="false"/>
+    <lineToCover lineNumber="33" covered="false"/>
+    <lineToCover lineNumber="34" covered="false"/>
+    <lineToCover lineNumber="35" covered="false"/>
+    <lineToCover lineNumber="36" covered="false"/>
+    <lineToCover lineNumber="37" covered="false"/>
+    <lineToCover lineNumber="39" covered="false"/>
+    <lineToCover lineNumber="40" covered="false"/>
+    <lineToCover lineNumber="41" covered="false"/>
+    <lineToCover lineNumber="42" covered="false"/>
+    <lineToCover lineNumber="43" covered="false"/>
+    <lineToCover lineNumber="44" covered="false"/>
+    <lineToCover lineNumber="45" covered="false"/>
+    <lineToCover lineNumber="46" covered="false"/>
+    <lineToCover lineNumber="47" covered="false"/>
+    <lineToCover lineNumber="48" covered="false"/>
+    <lineToCover lineNumber="49" covered="false"/>
+    <lineToCover lineNumber="50" covered="false"/>
+    <lineToCover lineNumber="51" covered="false"/>
+    <lineToCover lineNumber="52" covered="false"/>
+    <lineToCover lineNumber="53" covered="false"/>
+    <lineToCover lineNumber="55" covered="false"/>
+    <lineToCover lineNumber="56" covered="false"/>
+    <lineToCover lineNumber="57" covered="false"/>
+    <lineToCover lineNumber="58" covered="false"/>
+    <lineToCover lineNumber="59" covered="false"/>
+    <lineToCover lineNumber="60" covered="false"/>
+    <lineToCover lineNumber="61" covered="false"/>
+    <lineToCover lineNumber="62" covered="false"/>
+    <lineToCover lineNumber="63" covered="false"/>
+    <lineToCover lineNumber="64" covered="false"/>
+    <lineToCover lineNumber="65" covered="false"/>
+    <lineToCover lineNumber="66" covered="false"/>
+    <lineToCover lineNumber="67" covered="false"/>
+    <lineToCover lineNumber="68" covered="false"/>
+    <lineToCover lineNumber="69" covered="false"/>
+    <lineToCover lineNumber="70" covered="false"/>
+    <lineToCover lineNumber="71" covered="false"/>
+    <lineToCover lineNumber="72" covered="false"/>
+    <lineToCover lineNumber="73" covered="false"/>
+    <lineToCover lineNumber="74" covered="false"/>
+    <lineToCover lineNumber="76" covered="false"/>
+    <lineToCover lineNumber="77" covered="false"/>
+    <lineToCover lineNumber="78" covered="false"/>
+    <lineToCover lineNumber="79" covered="false"/>
+    <lineToCover lineNumber="80" covered="false"/>
+    <lineToCover lineNumber="81" covered="false"/>
+    <lineToCover lineNumber="82" covered="false"/>
+    <lineToCover lineNumber="83" covered="false"/>
+    <lineToCover lineNumber="84" covered="false"/>
+    <lineToCover lineNumber="85" covered="false"/>
+    <lineToCover lineNumber="86" covered="false"/>
+    <lineToCover lineNumber="87" covered="false"/>
+    <lineToCover lineNumber="88" covered="false"/>
+    <lineToCover lineNumber="89" covered="false"/>
+    <lineToCover lineNumber="90" covered="false"/>
+    <lineToCover lineNumber="92" covered="false"/>
+    <lineToCover lineNumber="93" covered="false"/>
+    <lineToCover lineNumber="94" covered="false"/>
+    <lineToCover lineNumber="95" covered="false"/>
+    <lineToCover lineNumber="96" covered="false"/>
+    <lineToCover lineNumber="97" covered="false"/>
+    <lineToCover lineNumber="98" covered="false"/>
+    <lineToCover lineNumber="99" covered="false"/>
+    <lineToCover lineNumber="100" covered="false"/>
+    <lineToCover lineNumber="101" covered="false"/>
+    <lineToCover lineNumber="102" covered="false"/>
+    <lineToCover lineNumber="103" covered="false"/>
+    <lineToCover lineNumber="104" covered="false"/>
+    <lineToCover lineNumber="105" covered="false"/>
+    <lineToCover lineNumber="106" covered="false"/>
+    <lineToCover lineNumber="107" covered="false"/>
+  </file>
+  <file path="/Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/EditTournamentSheet.swift">
+    <lineToCover lineNumber="18" covered="false"/>
+    <lineToCover lineNumber="19" covered="false"/>
+    <lineToCover lineNumber="20" covered="false"/>
+    <lineToCover lineNumber="21" covered="false"/>
+    <lineToCover lineNumber="22" covered="false"/>
+    <lineToCover lineNumber="23" covered="false"/>
+    <lineToCover lineNumber="24" covered="false"/>
+    <lineToCover lineNumber="25" covered="false"/>
+    <lineToCover lineNumber="26" covered="false"/>
+    <lineToCover lineNumber="27" covered="false"/>
+    <lineToCover lineNumber="29" covered="false"/>
+    <lineToCover lineNumber="30" covered="false"/>
+    <lineToCover lineNumber="31" covered="false"/>
+    <lineToCover lineNumber="32" covered="false"/>
+    <lineToCover lineNumber="33" covered="false"/>
+    <lineToCover lineNumber="34" covered="false"/>
+    <lineToCover lineNumber="35" covered="false"/>
+    <lineToCover lineNumber="36" covered="false"/>
+    <lineToCover lineNumber="37" covered="false"/>
+    <lineToCover lineNumber="38" covered="false"/>
+    <lineToCover lineNumber="39" covered="false"/>
+    <lineToCover lineNumber="40" covered="false"/>
+    <lineToCover lineNumber="41" covered="false"/>
+    <lineToCover lineNumber="42" covered="false"/>
+    <lineToCover lineNumber="43" covered="false"/>
+    <lineToCover lineNumber="44" covered="false"/>
+    <lineToCover lineNumber="45" covered="false"/>
+    <lineToCover lineNumber="46" covered="false"/>
+    <lineToCover lineNumber="47" covered="false"/>
+    <lineToCover lineNumber="48" covered="false"/>
+    <lineToCover lineNumber="49" covered="false"/>
+    <lineToCover lineNumber="50" covered="false"/>
+    <lineToCover lineNumber="51" covered="false"/>
+    <lineToCover lineNumber="52" covered="false"/>
+    <lineToCover lineNumber="53" covered="false"/>
+    <lineToCover lineNumber="54" covered="false"/>
+    <lineToCover lineNumber="55" covered="false"/>
+    <lineToCover lineNumber="56" covered="false"/>
+    <lineToCover lineNumber="57" covered="false"/>
+    <lineToCover lineNumber="58" covered="false"/>
+    <lineToCover lineNumber="59" covered="false"/>
+    <lineToCover lineNumber="60" covered="false"/>
+    <lineToCover lineNumber="61" covered="false"/>
+    <lineToCover lineNumber="62" covered="false"/>
+    <lineToCover lineNumber="63" covered="false"/>
+    <lineToCover lineNumber="64" covered="false"/>
+    <lineToCover lineNumber="65" covered="false"/>
+    <lineToCover lineNumber="66" covered="false"/>
+    <lineToCover lineNumber="67" covered="false"/>
+    <lineToCover lineNumber="68" covered="false"/>
+    <lineToCover lineNumber="69" covered="false"/>
+    <lineToCover lineNumber="70" covered="false"/>
+    <lineToCover lineNumber="71" covered="false"/>
+    <lineToCover lineNumber="72" covered="false"/>
+    <lineToCover lineNumber="73" covered="false"/>
+    <lineToCover lineNumber="74" covered="false"/>
+    <lineToCover lineNumber="75" covered="false"/>
+    <lineToCover lineNumber="76" covered="false"/>
+    <lineToCover lineNumber="77" covered="false"/>
+    <lineToCover lineNumber="78" covered="false"/>
+    <lineToCover lineNumber="79" covered="false"/>
+    <lineToCover lineNumber="80" covered="false"/>
+  </file>
+  <file path="/Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/MatchCardView.swift">
+    <lineToCover lineNumber="13" covered="false"/>
+    <lineToCover lineNumber="14" covered="false"/>
+    <lineToCover lineNumber="15" covered="false"/>
+    <lineToCover lineNumber="16" covered="false"/>
+    <lineToCover lineNumber="17" covered="false"/>
+    <lineToCover lineNumber="18" covered="false"/>
+    <lineToCover lineNumber="19" covered="false"/>
+    <lineToCover lineNumber="20" covered="false"/>
+    <lineToCover lineNumber="21" covered="false"/>
+    <lineToCover lineNumber="22" covered="false"/>
+    <lineToCover lineNumber="23" covered="false"/>
+    <lineToCover lineNumber="24" covered="false"/>
+    <lineToCover lineNumber="25" covered="false"/>
+    <lineToCover lineNumber="26" covered="false"/>
+    <lineToCover lineNumber="27" covered="false"/>
+    <lineToCover lineNumber="28" covered="false"/>
+    <lineToCover lineNumber="29" covered="false"/>
+    <lineToCover lineNumber="30" covered="false"/>
+    <lineToCover lineNumber="31" covered="false"/>
+    <lineToCover lineNumber="32" covered="false"/>
+    <lineToCover lineNumber="33" covered="false"/>
+    <lineToCover lineNumber="34" covered="false"/>
+    <lineToCover lineNumber="35" covered="false"/>
+    <lineToCover lineNumber="36" covered="false"/>
+    <lineToCover lineNumber="37" covered="false"/>
+    <lineToCover lineNumber="38" covered="false"/>
+    <lineToCover lineNumber="39" covered="false"/>
+    <lineToCover lineNumber="40" covered="false"/>
+    <lineToCover lineNumber="41" covered="false"/>
+    <lineToCover lineNumber="42" covered="false"/>
+    <lineToCover lineNumber="43" covered="false"/>
+    <lineToCover lineNumber="44" covered="false"/>
+    <lineToCover lineNumber="45" covered="false"/>
+    <lineToCover lineNumber="47" covered="false"/>
+    <lineToCover lineNumber="48" covered="false"/>
+    <lineToCover lineNumber="49" covered="false"/>
+    <lineToCover lineNumber="50" covered="false"/>
+    <lineToCover lineNumber="51" covered="false"/>
+    <lineToCover lineNumber="52" covered="false"/>
+    <lineToCover lineNumber="53" covered="false"/>
+    <lineToCover lineNumber="54" covered="false"/>
+    <lineToCover lineNumber="55" covered="false"/>
+    <lineToCover lineNumber="56" covered="false"/>
+    <lineToCover lineNumber="57" covered="false"/>
+    <lineToCover lineNumber="58" covered="false"/>
+    <lineToCover lineNumber="59" covered="false"/>
+    <lineToCover lineNumber="60" covered="false"/>
+    <lineToCover lineNumber="61" covered="false"/>
+    <lineToCover lineNumber="62" covered="false"/>
+    <lineToCover lineNumber="63" covered="false"/>
+    <lineToCover lineNumber="64" covered="false"/>
+    <lineToCover lineNumber="65" covered="false"/>
+    <lineToCover lineNumber="66" covered="false"/>
+    <lineToCover lineNumber="67" covered="false"/>
+    <lineToCover lineNumber="68" covered="false"/>
+    <lineToCover lineNumber="69" covered="false"/>
+    <lineToCover lineNumber="70" covered="false"/>
+    <lineToCover lineNumber="71" covered="false"/>
+    <lineToCover lineNumber="72" covered="false"/>
+    <lineToCover lineNumber="73" covered="false"/>
+    <lineToCover lineNumber="74" covered="false"/>
+    <lineToCover lineNumber="76" covered="false"/>
+    <lineToCover lineNumber="77" covered="false"/>
+    <lineToCover lineNumber="78" covered="false"/>
+    <lineToCover lineNumber="79" covered="false"/>
+    <lineToCover lineNumber="80" covered="false"/>
+    <lineToCover lineNumber="81" covered="false"/>
+    <lineToCover lineNumber="82" covered="false"/>
+    <lineToCover lineNumber="83" covered="false"/>
+    <lineToCover lineNumber="84" covered="false"/>
+    <lineToCover lineNumber="86" covered="false"/>
+    <lineToCover lineNumber="87" covered="false"/>
+    <lineToCover lineNumber="88" covered="false"/>
+    <lineToCover lineNumber="89" covered="false"/>
+    <lineToCover lineNumber="90" covered="false"/>
+    <lineToCover lineNumber="91" covered="false"/>
+    <lineToCover lineNumber="92" covered="false"/>
+    <lineToCover lineNumber="93" covered="false"/>
+    <lineToCover lineNumber="94" covered="false"/>
+    <lineToCover lineNumber="95" covered="false"/>
+    <lineToCover lineNumber="96" covered="false"/>
+    <lineToCover lineNumber="97" covered="false"/>
+    <lineToCover lineNumber="104" covered="false"/>
+    <lineToCover lineNumber="105" covered="false"/>
+    <lineToCover lineNumber="106" covered="false"/>
+    <lineToCover lineNumber="107" covered="false"/>
+    <lineToCover lineNumber="108" covered="false"/>
+    <lineToCover lineNumber="109" covered="false"/>
+    <lineToCover lineNumber="110" covered="false"/>
+    <lineToCover lineNumber="111" covered="false"/>
+    <lineToCover lineNumber="112" covered="false"/>
+    <lineToCover lineNumber="113" covered="false"/>
+    <lineToCover lineNumber="115" covered="false"/>
+    <lineToCover lineNumber="116" covered="false"/>
+    <lineToCover lineNumber="117" covered="false"/>
+    <lineToCover lineNumber="118" covered="false"/>
+    <lineToCover lineNumber="119" covered="false"/>
+    <lineToCover lineNumber="120" covered="false"/>
+    <lineToCover lineNumber="121" covered="false"/>
+    <lineToCover lineNumber="122" covered="false"/>
+    <lineToCover lineNumber="123" covered="false"/>
+    <lineToCover lineNumber="124" covered="false"/>
+    <lineToCover lineNumber="125" covered="false"/>
+    <lineToCover lineNumber="127" covered="false"/>
+    <lineToCover lineNumber="128" covered="false"/>
+    <lineToCover lineNumber="129" covered="false"/>
+    <lineToCover lineNumber="130" covered="false"/>
+    <lineToCover lineNumber="131" covered="false"/>
+    <lineToCover lineNumber="132" covered="false"/>
+    <lineToCover lineNumber="133" covered="false"/>
+    <lineToCover lineNumber="134" covered="false"/>
+    <lineToCover lineNumber="135" covered="false"/>
+    <lineToCover lineNumber="136" covered="false"/>
+  </file>
+  <file path="/Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/MatchDetailView.swift">
+    <lineToCover lineNumber="17" covered="false"/>
+    <lineToCover lineNumber="19" covered="false"/>
+    <lineToCover lineNumber="20" covered="false"/>
+    <lineToCover lineNumber="21" covered="false"/>
+    <lineToCover lineNumber="22" covered="false"/>
+    <lineToCover lineNumber="23" covered="false"/>
+    <lineToCover lineNumber="24" covered="false"/>
+    <lineToCover lineNumber="26" covered="false"/>
+    <lineToCover lineNumber="27" covered="false"/>
+    <lineToCover lineNumber="28" covered="false"/>
+    <lineToCover lineNumber="29" covered="false"/>
+    <lineToCover lineNumber="30" covered="false"/>
+    <lineToCover lineNumber="31" covered="false"/>
+    <lineToCover lineNumber="32" covered="false"/>
+    <lineToCover lineNumber="33" covered="false"/>
+    <lineToCover lineNumber="34" covered="false"/>
+    <lineToCover lineNumber="35" covered="false"/>
+    <lineToCover lineNumber="36" covered="false"/>
+    <lineToCover lineNumber="37" covered="false"/>
+    <lineToCover lineNumber="38" covered="false"/>
+    <lineToCover lineNumber="39" covered="false"/>
+    <lineToCover lineNumber="40" covered="false"/>
+    <lineToCover lineNumber="41" covered="false"/>
+    <lineToCover lineNumber="42" covered="false"/>
+    <lineToCover lineNumber="43" covered="false"/>
+    <lineToCover lineNumber="44" covered="false"/>
+    <lineToCover lineNumber="45" covered="false"/>
+    <lineToCover lineNumber="46" covered="false"/>
+    <lineToCover lineNumber="47" covered="false"/>
+    <lineToCover lineNumber="48" covered="false"/>
+    <lineToCover lineNumber="49" covered="false"/>
+    <lineToCover lineNumber="50" covered="false"/>
+    <lineToCover lineNumber="51" covered="false"/>
+    <lineToCover lineNumber="52" covered="false"/>
+    <lineToCover lineNumber="53" covered="false"/>
+    <lineToCover lineNumber="54" covered="false"/>
+    <lineToCover lineNumber="55" covered="false"/>
+    <lineToCover lineNumber="56" covered="false"/>
+    <lineToCover lineNumber="57" covered="false"/>
+    <lineToCover lineNumber="58" covered="false"/>
+    <lineToCover lineNumber="59" covered="false"/>
+    <lineToCover lineNumber="60" covered="false"/>
+    <lineToCover lineNumber="61" covered="false"/>
+    <lineToCover lineNumber="62" covered="false"/>
+    <lineToCover lineNumber="63" covered="false"/>
+    <lineToCover lineNumber="64" covered="false"/>
+    <lineToCover lineNumber="65" covered="false"/>
+    <lineToCover lineNumber="66" covered="false"/>
+    <lineToCover lineNumber="67" covered="false"/>
+    <lineToCover lineNumber="68" covered="false"/>
+    <lineToCover lineNumber="69" covered="false"/>
+    <lineToCover lineNumber="70" covered="false"/>
+    <lineToCover lineNumber="71" covered="false"/>
+    <lineToCover lineNumber="72" covered="false"/>
+    <lineToCover lineNumber="73" covered="false"/>
+    <lineToCover lineNumber="74" covered="false"/>
+    <lineToCover lineNumber="75" covered="false"/>
+    <lineToCover lineNumber="76" covered="false"/>
+    <lineToCover lineNumber="77" covered="false"/>
+    <lineToCover lineNumber="79" covered="false"/>
+    <lineToCover lineNumber="80" covered="false"/>
+    <lineToCover lineNumber="81" covered="false"/>
+    <lineToCover lineNumber="82" covered="false"/>
+    <lineToCover lineNumber="83" covered="false"/>
+    <lineToCover lineNumber="84" covered="false"/>
+    <lineToCover lineNumber="85" covered="false"/>
+    <lineToCover lineNumber="86" covered="false"/>
+    <lineToCover lineNumber="87" covered="false"/>
+    <lineToCover lineNumber="95" covered="false"/>
+    <lineToCover lineNumber="96" covered="false"/>
+    <lineToCover lineNumber="97" covered="false"/>
+    <lineToCover lineNumber="98" covered="false"/>
+    <lineToCover lineNumber="99" covered="false"/>
+    <lineToCover lineNumber="100" covered="false"/>
+    <lineToCover lineNumber="101" covered="false"/>
+    <lineToCover lineNumber="102" covered="false"/>
+    <lineToCover lineNumber="103" covered="false"/>
+    <lineToCover lineNumber="104" covered="false"/>
+    <lineToCover lineNumber="105" covered="false"/>
+    <lineToCover lineNumber="106" covered="false"/>
+    <lineToCover lineNumber="107" covered="false"/>
+    <lineToCover lineNumber="108" covered="false"/>
+    <lineToCover lineNumber="109" covered="false"/>
+    <lineToCover lineNumber="110" covered="false"/>
+    <lineToCover lineNumber="111" covered="false"/>
+    <lineToCover lineNumber="112" covered="false"/>
+    <lineToCover lineNumber="113" covered="false"/>
+    <lineToCover lineNumber="114" covered="false"/>
+    <lineToCover lineNumber="115" covered="false"/>
+    <lineToCover lineNumber="116" covered="false"/>
+    <lineToCover lineNumber="117" covered="false"/>
+    <lineToCover lineNumber="118" covered="false"/>
+    <lineToCover lineNumber="119" covered="false"/>
+    <lineToCover lineNumber="120" covered="false"/>
+    <lineToCover lineNumber="121" covered="false"/>
+    <lineToCover lineNumber="122" covered="false"/>
+    <lineToCover lineNumber="123" covered="false"/>
+    <lineToCover lineNumber="124" covered="false"/>
+    <lineToCover lineNumber="125" covered="false"/>
+    <lineToCover lineNumber="126" covered="false"/>
+    <lineToCover lineNumber="127" covered="false"/>
+    <lineToCover lineNumber="128" covered="false"/>
+    <lineToCover lineNumber="129" covered="false"/>
+    <lineToCover lineNumber="130" covered="false"/>
+    <lineToCover lineNumber="131" covered="false"/>
+    <lineToCover lineNumber="132" covered="false"/>
+  </file>
+  <file path="/Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/Models/Tournament.swift">
+    <lineToCover lineNumber="21" covered="false"/>
+    <lineToCover lineNumber="22" covered="false"/>
+    <lineToCover lineNumber="25" covered="false"/>
+    <lineToCover lineNumber="27" covered="false"/>
+    <lineToCover lineNumber="36" covered="false"/>
+    <lineToCover lineNumber="37" covered="false"/>
+    <lineToCover lineNumber="38" covered="false"/>
+    <lineToCover lineNumber="39" covered="false"/>
+    <lineToCover lineNumber="40" covered="false"/>
+    <lineToCover lineNumber="41" covered="false"/>
+    <lineToCover lineNumber="42" covered="false"/>
+    <lineToCover lineNumber="43" covered="false"/>
+    <lineToCover lineNumber="44" covered="false"/>
+    <lineToCover lineNumber="45" covered="false"/>
+    <lineToCover lineNumber="46" covered="false"/>
+    <lineToCover lineNumber="47" covered="false"/>
+    <lineToCover lineNumber="48" covered="false"/>
+    <lineToCover lineNumber="49" covered="false"/>
+    <lineToCover lineNumber="51" covered="false"/>
+    <lineToCover lineNumber="52" covered="false"/>
+    <lineToCover lineNumber="53" covered="false"/>
+    <lineToCover lineNumber="54" covered="false"/>
+    <lineToCover lineNumber="55" covered="false"/>
+    <lineToCover lineNumber="56" covered="false"/>
+    <lineToCover lineNumber="58" covered="false"/>
+    <lineToCover lineNumber="59" covered="false"/>
+    <lineToCover lineNumber="60" covered="false"/>
+    <lineToCover lineNumber="61" covered="false"/>
+    <lineToCover lineNumber="62" covered="false"/>
+    <lineToCover lineNumber="63" covered="false"/>
+    <lineToCover lineNumber="64" covered="false"/>
+    <lineToCover lineNumber="65" covered="false"/>
+    <lineToCover lineNumber="70" covered="false"/>
+    <lineToCover lineNumber="71" covered="false"/>
+    <lineToCover lineNumber="72" covered="false"/>
+    <lineToCover lineNumber="73" covered="false"/>
+    <lineToCover lineNumber="74" covered="false"/>
+    <lineToCover lineNumber="75" covered="false"/>
+    <lineToCover lineNumber="76" covered="false"/>
+    <lineToCover lineNumber="77" covered="false"/>
+    <lineToCover lineNumber="78" covered="false"/>
+    <lineToCover lineNumber="79" covered="false"/>
+    <lineToCover lineNumber="80" covered="false"/>
+    <lineToCover lineNumber="81" covered="false"/>
+    <lineToCover lineNumber="85" covered="false"/>
+    <lineToCover lineNumber="86" covered="false"/>
+    <lineToCover lineNumber="87" covered="false"/>
+    <lineToCover lineNumber="88" covered="false"/>
+    <lineToCover lineNumber="89" covered="false"/>
+    <lineToCover lineNumber="90" covered="false"/>
+    <lineToCover lineNumber="91" covered="false"/>
+    <lineToCover lineNumber="92" covered="false"/>
+    <lineToCover lineNumber="93" covered="false"/>
+    <lineToCover lineNumber="94" covered="false"/>
+    <lineToCover lineNumber="95" covered="false"/>
+    <lineToCover lineNumber="96" covered="false"/>
+    <lineToCover lineNumber="97" covered="false"/>
+    <lineToCover lineNumber="98" covered="false"/>
+    <lineToCover lineNumber="100" covered="false"/>
+    <lineToCover lineNumber="101" covered="false"/>
+    <lineToCover lineNumber="102" covered="false"/>
+    <lineToCover lineNumber="103" covered="false"/>
+    <lineToCover lineNumber="104" covered="false"/>
+    <lineToCover lineNumber="105" covered="false"/>
+    <lineToCover lineNumber="106" covered="false"/>
+    <lineToCover lineNumber="107" covered="false"/>
+    <lineToCover lineNumber="108" covered="false"/>
+    <lineToCover lineNumber="109" covered="false"/>
+    <lineToCover lineNumber="110" covered="false"/>
+    <lineToCover lineNumber="111" covered="false"/>
+    <lineToCover lineNumber="112" covered="false"/>
+    <lineToCover lineNumber="113" covered="false"/>
+    <lineToCover lineNumber="114" covered="false"/>
+    <lineToCover lineNumber="115" covered="false"/>
+    <lineToCover lineNumber="116" covered="false"/>
+    <lineToCover lineNumber="117" covered="false"/>
+    <lineToCover lineNumber="118" covered="false"/>
+    <lineToCover lineNumber="119" covered="false"/>
+    <lineToCover lineNumber="120" covered="false"/>
+    <lineToCover lineNumber="121" covered="false"/>
+    <lineToCover lineNumber="133" covered="false"/>
+    <lineToCover lineNumber="134" covered="false"/>
+    <lineToCover lineNumber="135" covered="false"/>
+    <lineToCover lineNumber="136" covered="false"/>
+    <lineToCover lineNumber="137" covered="false"/>
+    <lineToCover lineNumber="138" covered="false"/>
+    <lineToCover lineNumber="140" covered="false"/>
+    <lineToCover lineNumber="141" covered="false"/>
+    <lineToCover lineNumber="142" covered="false"/>
+    <lineToCover lineNumber="145" covered="false"/>
+    <lineToCover lineNumber="146" covered="false"/>
+    <lineToCover lineNumber="147" covered="false"/>
+    <lineToCover lineNumber="163" covered="false"/>
+    <lineToCover lineNumber="164" covered="false"/>
+    <lineToCover lineNumber="165" covered="false"/>
+    <lineToCover lineNumber="167" covered="false"/>
+    <lineToCover lineNumber="168" covered="false"/>
+    <lineToCover lineNumber="169" covered="false"/>
+    <lineToCover lineNumber="170" covered="false"/>
+    <lineToCover lineNumber="171" covered="false"/>
+    <lineToCover lineNumber="172" covered="false"/>
+    <lineToCover lineNumber="173" covered="false"/>
+    <lineToCover lineNumber="174" covered="false"/>
+    <lineToCover lineNumber="176" covered="false"/>
+    <lineToCover lineNumber="177" covered="false"/>
+    <lineToCover lineNumber="178" covered="false"/>
+    <lineToCover lineNumber="179" covered="false"/>
+    <lineToCover lineNumber="180" covered="false"/>
+    <lineToCover lineNumber="181" covered="false"/>
+    <lineToCover lineNumber="182" covered="false"/>
+    <lineToCover lineNumber="183" covered="false"/>
+    <lineToCover lineNumber="184" covered="false"/>
+    <lineToCover lineNumber="185" covered="false"/>
+    <lineToCover lineNumber="192" covered="false"/>
+    <lineToCover lineNumber="193" covered="false"/>
+    <lineToCover lineNumber="194" covered="false"/>
+    <lineToCover lineNumber="204" covered="false"/>
+    <lineToCover lineNumber="205" covered="false"/>
+    <lineToCover lineNumber="206" covered="false"/>
+    <lineToCover lineNumber="207" covered="false"/>
+    <lineToCover lineNumber="208" covered="false"/>
+    <lineToCover lineNumber="209" covered="false"/>
+    <lineToCover lineNumber="210" covered="false"/>
+    <lineToCover lineNumber="211" covered="false"/>
+    <lineToCover lineNumber="212" covered="false"/>
+    <lineToCover lineNumber="213" covered="false"/>
+    <lineToCover lineNumber="214" covered="false"/>
+    <lineToCover lineNumber="215" covered="false"/>
+    <lineToCover lineNumber="216" covered="false"/>
+    <lineToCover lineNumber="225" covered="false"/>
+    <lineToCover lineNumber="226" covered="false"/>
+    <lineToCover lineNumber="227" covered="false"/>
+    <lineToCover lineNumber="228" covered="false"/>
+    <lineToCover lineNumber="229" covered="false"/>
+    <lineToCover lineNumber="230" covered="false"/>
+    <lineToCover lineNumber="231" covered="false"/>
+    <lineToCover lineNumber="232" covered="false"/>
+    <lineToCover lineNumber="233" covered="false"/>
+    <lineToCover lineNumber="234" covered="false"/>
+    <lineToCover lineNumber="235" covered="false"/>
+    <lineToCover lineNumber="236" covered="false"/>
+    <lineToCover lineNumber="237" covered="false"/>
+    <lineToCover lineNumber="238" covered="false"/>
+    <lineToCover lineNumber="241" covered="false"/>
+    <lineToCover lineNumber="242" covered="false"/>
+    <lineToCover lineNumber="243" covered="false"/>
+    <lineToCover lineNumber="244" covered="false"/>
+    <lineToCover lineNumber="245" covered="false"/>
+    <lineToCover lineNumber="246" covered="false"/>
+    <lineToCover lineNumber="247" covered="false"/>
+    <lineToCover lineNumber="248" covered="false"/>
+    <lineToCover lineNumber="249" covered="false"/>
+    <lineToCover lineNumber="250" covered="false"/>
+    <lineToCover lineNumber="251" covered="false"/>
+    <lineToCover lineNumber="252" covered="false"/>
+    <lineToCover lineNumber="253" covered="false"/>
+    <lineToCover lineNumber="254" covered="false"/>
+    <lineToCover lineNumber="255" covered="false"/>
+    <lineToCover lineNumber="256" covered="false"/>
+    <lineToCover lineNumber="257" covered="false"/>
+    <lineToCover lineNumber="265" covered="false"/>
+    <lineToCover lineNumber="266" covered="false"/>
+    <lineToCover lineNumber="267" covered="false"/>
+    <lineToCover lineNumber="268" covered="false"/>
+    <lineToCover lineNumber="269" covered="false"/>
+    <lineToCover lineNumber="270" covered="false"/>
+    <lineToCover lineNumber="271" covered="false"/>
+    <lineToCover lineNumber="272" covered="false"/>
+    <lineToCover lineNumber="273" covered="false"/>
+    <lineToCover lineNumber="274" covered="false"/>
+    <lineToCover lineNumber="275" covered="false"/>
+    <lineToCover lineNumber="276" covered="false"/>
+    <lineToCover lineNumber="277" covered="false"/>
+    <lineToCover lineNumber="278" covered="false"/>
+    <lineToCover lineNumber="279" covered="false"/>
+    <lineToCover lineNumber="280" covered="false"/>
+    <lineToCover lineNumber="281" covered="false"/>
+    <lineToCover lineNumber="282" covered="false"/>
+    <lineToCover lineNumber="283" covered="false"/>
+    <lineToCover lineNumber="284" covered="false"/>
+    <lineToCover lineNumber="285" covered="false"/>
+    <lineToCover lineNumber="286" covered="false"/>
+    <lineToCover lineNumber="287" covered="false"/>
+    <lineToCover lineNumber="288" covered="false"/>
+    <lineToCover lineNumber="289" covered="false"/>
+    <lineToCover lineNumber="290" covered="false"/>
+    <lineToCover lineNumber="291" covered="false"/>
+    <lineToCover lineNumber="292" covered="false"/>
+    <lineToCover lineNumber="293" covered="false"/>
+    <lineToCover lineNumber="294" covered="false"/>
+    <lineToCover lineNumber="301" covered="false"/>
+    <lineToCover lineNumber="302" covered="false"/>
+    <lineToCover lineNumber="303" covered="false"/>
+    <lineToCover lineNumber="304" covered="false"/>
+    <lineToCover lineNumber="305" covered="false"/>
+    <lineToCover lineNumber="306" covered="false"/>
+    <lineToCover lineNumber="307" covered="false"/>
+    <lineToCover lineNumber="308" covered="false"/>
+    <lineToCover lineNumber="309" covered="false"/>
+    <lineToCover lineNumber="310" covered="false"/>
+    <lineToCover lineNumber="311" covered="false"/>
+    <lineToCover lineNumber="312" covered="false"/>
+    <lineToCover lineNumber="313" covered="false"/>
+    <lineToCover lineNumber="314" covered="false"/>
+    <lineToCover lineNumber="315" covered="false"/>
+    <lineToCover lineNumber="316" covered="false"/>
+    <lineToCover lineNumber="317" covered="false"/>
+    <lineToCover lineNumber="318" covered="false"/>
+    <lineToCover lineNumber="319" covered="false"/>
+    <lineToCover lineNumber="320" covered="false"/>
+    <lineToCover lineNumber="321" covered="false"/>
+    <lineToCover lineNumber="322" covered="false"/>
+    <lineToCover lineNumber="323" covered="false"/>
+    <lineToCover lineNumber="324" covered="false"/>
+    <lineToCover lineNumber="325" covered="false"/>
+    <lineToCover lineNumber="326" covered="false"/>
+    <lineToCover lineNumber="327" covered="false"/>
+    <lineToCover lineNumber="328" covered="false"/>
+    <lineToCover lineNumber="329" covered="false"/>
+    <lineToCover lineNumber="330" covered="false"/>
+    <lineToCover lineNumber="331" covered="false"/>
+    <lineToCover lineNumber="332" covered="false"/>
+    <lineToCover lineNumber="333" covered="false"/>
+    <lineToCover lineNumber="334" covered="false"/>
+    <lineToCover lineNumber="337" covered="false"/>
+    <lineToCover lineNumber="338" covered="false"/>
+    <lineToCover lineNumber="339" covered="false"/>
+    <lineToCover lineNumber="340" covered="false"/>
+    <lineToCover lineNumber="341" covered="false"/>
+    <lineToCover lineNumber="342" covered="false"/>
+    <lineToCover lineNumber="344" covered="false"/>
+    <lineToCover lineNumber="345" covered="false"/>
+    <lineToCover lineNumber="346" covered="false"/>
+    <lineToCover lineNumber="347" covered="false"/>
+    <lineToCover lineNumber="348" covered="false"/>
+    <lineToCover lineNumber="349" covered="false"/>
+    <lineToCover lineNumber="350" covered="false"/>
+    <lineToCover lineNumber="351" covered="false"/>
+    <lineToCover lineNumber="352" covered="false"/>
+    <lineToCover lineNumber="353" covered="false"/>
+    <lineToCover lineNumber="354" covered="false"/>
+    <lineToCover lineNumber="355" covered="false"/>
+    <lineToCover lineNumber="356" covered="false"/>
+    <lineToCover lineNumber="357" covered="false"/>
+    <lineToCover lineNumber="358" covered="false"/>
+    <lineToCover lineNumber="359" covered="false"/>
+    <lineToCover lineNumber="360" covered="false"/>
+    <lineToCover lineNumber="361" covered="false"/>
+    <lineToCover lineNumber="362" covered="false"/>
+    <lineToCover lineNumber="363" covered="false"/>
+    <lineToCover lineNumber="364" covered="false"/>
+    <lineToCover lineNumber="365" covered="false"/>
+    <lineToCover lineNumber="366" covered="false"/>
+    <lineToCover lineNumber="367" covered="false"/>
+    <lineToCover lineNumber="368" covered="false"/>
+    <lineToCover lineNumber="369" covered="false"/>
+    <lineToCover lineNumber="370" covered="false"/>
+    <lineToCover lineNumber="371" covered="false"/>
+    <lineToCover lineNumber="372" covered="false"/>
+    <lineToCover lineNumber="373" covered="false"/>
+    <lineToCover lineNumber="374" covered="false"/>
+    <lineToCover lineNumber="375" covered="false"/>
+    <lineToCover lineNumber="376" covered="false"/>
+    <lineToCover lineNumber="377" covered="false"/>
+  </file>
+  <file path="/Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/Models/TournamentStore.swift">
+    <lineToCover lineNumber="12" covered="true"/>
+    <lineToCover lineNumber="13" covered="true"/>
+    <lineToCover lineNumber="17" covered="true"/>
+    <lineToCover lineNumber="18" covered="true"/>
+    <lineToCover lineNumber="19" covered="true"/>
+    <lineToCover lineNumber="20" covered="true"/>
+    <lineToCover lineNumber="21" covered="true"/>
+    <lineToCover lineNumber="22" covered="true"/>
+    <lineToCover lineNumber="23" covered="true"/>
+    <lineToCover lineNumber="33" covered="false"/>
+    <lineToCover lineNumber="34" covered="false"/>
+    <lineToCover lineNumber="35" covered="false"/>
+    <lineToCover lineNumber="36" covered="false"/>
+    <lineToCover lineNumber="37" covered="false"/>
+    <lineToCover lineNumber="38" covered="false"/>
+    <lineToCover lineNumber="39" covered="false"/>
+    <lineToCover lineNumber="40" covered="false"/>
+    <lineToCover lineNumber="41" covered="false"/>
+    <lineToCover lineNumber="42" covered="false"/>
+    <lineToCover lineNumber="43" covered="false"/>
+    <lineToCover lineNumber="44" covered="false"/>
+    <lineToCover lineNumber="49" covered="false"/>
+    <lineToCover lineNumber="50" covered="false"/>
+    <lineToCover lineNumber="51" covered="false"/>
+    <lineToCover lineNumber="52" covered="false"/>
+    <lineToCover lineNumber="53" covered="false"/>
+    <lineToCover lineNumber="54" covered="false"/>
+    <lineToCover lineNumber="55" covered="false"/>
+    <lineToCover lineNumber="56" covered="false"/>
+    <lineToCover lineNumber="57" covered="false"/>
+    <lineToCover lineNumber="58" covered="false"/>
+    <lineToCover lineNumber="59" covered="false"/>
+    <lineToCover lineNumber="63" covered="true"/>
+    <lineToCover lineNumber="64" covered="true"/>
+    <lineToCover lineNumber="65" covered="true"/>
+    <lineToCover lineNumber="66" covered="true"/>
+    <lineToCover lineNumber="67" covered="true"/>
+    <lineToCover lineNumber="68" covered="true"/>
+    <lineToCover lineNumber="69" covered="false"/>
+    <lineToCover lineNumber="70" covered="true"/>
+    <lineToCover lineNumber="71" covered="true"/>
+    <lineToCover lineNumber="72" covered="true"/>
+    <lineToCover lineNumber="74" covered="false"/>
+    <lineToCover lineNumber="75" covered="false"/>
+    <lineToCover lineNumber="76" covered="false"/>
+    <lineToCover lineNumber="77" covered="false"/>
+    <lineToCover lineNumber="78" covered="false"/>
+    <lineToCover lineNumber="79" covered="false"/>
+    <lineToCover lineNumber="80" covered="false"/>
+    <lineToCover lineNumber="81" covered="false"/>
+    <lineToCover lineNumber="82" covered="false"/>
+    <lineToCover lineNumber="83" covered="false"/>
+    <lineToCover lineNumber="84" covered="false"/>
+    <lineToCover lineNumber="85" covered="false"/>
+    <lineToCover lineNumber="86" covered="false"/>
+    <lineToCover lineNumber="87" covered="false"/>
+    <lineToCover lineNumber="89" covered="false"/>
+    <lineToCover lineNumber="90" covered="false"/>
+    <lineToCover lineNumber="91" covered="false"/>
+    <lineToCover lineNumber="92" covered="false"/>
+    <lineToCover lineNumber="94" covered="false"/>
+    <lineToCover lineNumber="95" covered="false"/>
+    <lineToCover lineNumber="96" covered="false"/>
+    <lineToCover lineNumber="97" covered="false"/>
+    <lineToCover lineNumber="98" covered="false"/>
+    <lineToCover lineNumber="99" covered="false"/>
+    <lineToCover lineNumber="100" covered="false"/>
+    <lineToCover lineNumber="102" covered="false"/>
+    <lineToCover lineNumber="103" covered="false"/>
+    <lineToCover lineNumber="104" covered="false"/>
+    <lineToCover lineNumber="108" covered="false"/>
+    <lineToCover lineNumber="109" covered="false"/>
+    <lineToCover lineNumber="110" covered="false"/>
+    <lineToCover lineNumber="112" covered="false"/>
+    <lineToCover lineNumber="113" covered="false"/>
+    <lineToCover lineNumber="114" covered="false"/>
+  </file>
+  <file path="/Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/NewTournamentSheet.swift">
+    <lineToCover lineNumber="13" covered="false"/>
+    <lineToCover lineNumber="14" covered="false"/>
+    <lineToCover lineNumber="15" covered="false"/>
+    <lineToCover lineNumber="18" covered="false"/>
+    <lineToCover lineNumber="19" covered="false"/>
+    <lineToCover lineNumber="20" covered="false"/>
+    <lineToCover lineNumber="21" covered="false"/>
+    <lineToCover lineNumber="22" covered="false"/>
+    <lineToCover lineNumber="23" covered="false"/>
+    <lineToCover lineNumber="24" covered="false"/>
+    <lineToCover lineNumber="25" covered="false"/>
+    <lineToCover lineNumber="26" covered="false"/>
+    <lineToCover lineNumber="27" covered="false"/>
+    <lineToCover lineNumber="28" covered="false"/>
+    <lineToCover lineNumber="29" covered="false"/>
+    <lineToCover lineNumber="30" covered="false"/>
+    <lineToCover lineNumber="31" covered="false"/>
+    <lineToCover lineNumber="32" covered="false"/>
+    <lineToCover lineNumber="33" covered="false"/>
+    <lineToCover lineNumber="34" covered="false"/>
+    <lineToCover lineNumber="35" covered="false"/>
+    <lineToCover lineNumber="36" covered="false"/>
+    <lineToCover lineNumber="37" covered="false"/>
+    <lineToCover lineNumber="38" covered="false"/>
+    <lineToCover lineNumber="39" covered="false"/>
+    <lineToCover lineNumber="40" covered="false"/>
+    <lineToCover lineNumber="41" covered="false"/>
+    <lineToCover lineNumber="42" covered="false"/>
+    <lineToCover lineNumber="43" covered="false"/>
+    <lineToCover lineNumber="44" covered="false"/>
+    <lineToCover lineNumber="45" covered="false"/>
+    <lineToCover lineNumber="46" covered="false"/>
+    <lineToCover lineNumber="47" covered="false"/>
+    <lineToCover lineNumber="48" covered="false"/>
+    <lineToCover lineNumber="49" covered="false"/>
+    <lineToCover lineNumber="50" covered="false"/>
+    <lineToCover lineNumber="51" covered="false"/>
+    <lineToCover lineNumber="52" covered="false"/>
+    <lineToCover lineNumber="53" covered="false"/>
+    <lineToCover lineNumber="54" covered="false"/>
+    <lineToCover lineNumber="55" covered="false"/>
+    <lineToCover lineNumber="56" covered="false"/>
+    <lineToCover lineNumber="57" covered="false"/>
+    <lineToCover lineNumber="58" covered="false"/>
+    <lineToCover lineNumber="59" covered="false"/>
+    <lineToCover lineNumber="60" covered="false"/>
+    <lineToCover lineNumber="61" covered="false"/>
+    <lineToCover lineNumber="62" covered="false"/>
+    <lineToCover lineNumber="63" covered="false"/>
+    <lineToCover lineNumber="64" covered="false"/>
+    <lineToCover lineNumber="65" covered="false"/>
+    <lineToCover lineNumber="66" covered="false"/>
+    <lineToCover lineNumber="67" covered="false"/>
+    <lineToCover lineNumber="68" covered="false"/>
+    <lineToCover lineNumber="69" covered="false"/>
+    <lineToCover lineNumber="70" covered="false"/>
+    <lineToCover lineNumber="71" covered="false"/>
+    <lineToCover lineNumber="72" covered="false"/>
+    <lineToCover lineNumber="73" covered="false"/>
+    <lineToCover lineNumber="74" covered="false"/>
+    <lineToCover lineNumber="75" covered="false"/>
+    <lineToCover lineNumber="76" covered="false"/>
+    <lineToCover lineNumber="77" covered="false"/>
+    <lineToCover lineNumber="78" covered="false"/>
+    <lineToCover lineNumber="79" covered="false"/>
+    <lineToCover lineNumber="80" covered="false"/>
+    <lineToCover lineNumber="81" covered="false"/>
+    <lineToCover lineNumber="82" covered="false"/>
+    <lineToCover lineNumber="83" covered="false"/>
+    <lineToCover lineNumber="84" covered="false"/>
+    <lineToCover lineNumber="85" covered="false"/>
+    <lineToCover lineNumber="86" covered="false"/>
+  </file>
+  <file path="/Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/RoundRobinProApp.swift">
+    <lineToCover lineNumber="14" covered="true"/>
+    <lineToCover lineNumber="18" covered="true"/>
+    <lineToCover lineNumber="19" covered="true"/>
+    <lineToCover lineNumber="20" covered="true"/>
+    <lineToCover lineNumber="21" covered="true"/>
+    <lineToCover lineNumber="22" covered="false"/>
+    <lineToCover lineNumber="23" covered="false"/>
+    <lineToCover lineNumber="24" covered="false"/>
+    <lineToCover lineNumber="25" covered="false"/>
+    <lineToCover lineNumber="26" covered="false"/>
+    <lineToCover lineNumber="27" covered="false"/>
+    <lineToCover lineNumber="28" covered="false"/>
+    <lineToCover lineNumber="29" covered="false"/>
+    <lineToCover lineNumber="30" covered="false"/>
+    <lineToCover lineNumber="31" covered="false"/>
+    <lineToCover lineNumber="32" covered="false"/>
+    <lineToCover lineNumber="33" covered="true"/>
+    <lineToCover lineNumber="34" covered="true"/>
+    <lineToCover lineNumber="35" covered="true"/>
+    <lineToCover lineNumber="36" covered="true"/>
+    <lineToCover lineNumber="37" covered="true"/>
+    <lineToCover lineNumber="38" covered="true"/>
+    <lineToCover lineNumber="39" covered="false"/>
+    <lineToCover lineNumber="40" covered="false"/>
+    <lineToCover lineNumber="41" covered="true"/>
+    <lineToCover lineNumber="42" covered="true"/>
+    <lineToCover lineNumber="43" covered="true"/>
+    <lineToCover lineNumber="44" covered="true"/>
+    <lineToCover lineNumber="45" covered="true"/>
+    <lineToCover lineNumber="46" covered="true"/>
+    <lineToCover lineNumber="47" covered="true"/>
+    <lineToCover lineNumber="48" covered="true"/>
+    <lineToCover lineNumber="49" covered="true"/>
+    <lineToCover lineNumber="50" covered="false"/>
+    <lineToCover lineNumber="51" covered="false"/>
+    <lineToCover lineNumber="52" covered="true"/>
+    <lineToCover lineNumber="53" covered="true"/>
+    <lineToCover lineNumber="54" covered="true"/>
+    <lineToCover lineNumber="55" covered="true"/>
+    <lineToCover lineNumber="56" covered="true"/>
+    <lineToCover lineNumber="57" covered="true"/>
+  </file>
+  <file path="/Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/TournamentCardView.swift">
+    <lineToCover lineNumber="13" covered="false"/>
+    <lineToCover lineNumber="14" covered="false"/>
+    <lineToCover lineNumber="15" covered="false"/>
+    <lineToCover lineNumber="16" covered="false"/>
+    <lineToCover lineNumber="17" covered="false"/>
+    <lineToCover lineNumber="18" covered="false"/>
+    <lineToCover lineNumber="19" covered="false"/>
+    <lineToCover lineNumber="20" covered="false"/>
+    <lineToCover lineNumber="21" covered="false"/>
+    <lineToCover lineNumber="22" covered="false"/>
+    <lineToCover lineNumber="23" covered="false"/>
+    <lineToCover lineNumber="24" covered="false"/>
+    <lineToCover lineNumber="25" covered="false"/>
+    <lineToCover lineNumber="26" covered="false"/>
+    <lineToCover lineNumber="27" covered="false"/>
+    <lineToCover lineNumber="28" covered="false"/>
+    <lineToCover lineNumber="29" covered="false"/>
+    <lineToCover lineNumber="30" covered="false"/>
+    <lineToCover lineNumber="31" covered="false"/>
+    <lineToCover lineNumber="32" covered="false"/>
+    <lineToCover lineNumber="33" covered="false"/>
+    <lineToCover lineNumber="34" covered="false"/>
+    <lineToCover lineNumber="35" covered="false"/>
+    <lineToCover lineNumber="36" covered="false"/>
+    <lineToCover lineNumber="37" covered="false"/>
+    <lineToCover lineNumber="38" covered="false"/>
+    <lineToCover lineNumber="39" covered="false"/>
+    <lineToCover lineNumber="40" covered="false"/>
+    <lineToCover lineNumber="41" covered="false"/>
+    <lineToCover lineNumber="42" covered="false"/>
+    <lineToCover lineNumber="43" covered="false"/>
+    <lineToCover lineNumber="44" covered="false"/>
+    <lineToCover lineNumber="45" covered="false"/>
+    <lineToCover lineNumber="46" covered="false"/>
+    <lineToCover lineNumber="47" covered="false"/>
+    <lineToCover lineNumber="48" covered="false"/>
+    <lineToCover lineNumber="49" covered="false"/>
+    <lineToCover lineNumber="50" covered="false"/>
+    <lineToCover lineNumber="51" covered="false"/>
+    <lineToCover lineNumber="52" covered="false"/>
+    <lineToCover lineNumber="53" covered="false"/>
+    <lineToCover lineNumber="54" covered="false"/>
+    <lineToCover lineNumber="55" covered="false"/>
+    <lineToCover lineNumber="56" covered="false"/>
+    <lineToCover lineNumber="57" covered="false"/>
+    <lineToCover lineNumber="58" covered="false"/>
+    <lineToCover lineNumber="59" covered="false"/>
+    <lineToCover lineNumber="60" covered="false"/>
+    <lineToCover lineNumber="61" covered="false"/>
+    <lineToCover lineNumber="62" covered="false"/>
+    <lineToCover lineNumber="63" covered="false"/>
+    <lineToCover lineNumber="64" covered="false"/>
+    <lineToCover lineNumber="65" covered="false"/>
+    <lineToCover lineNumber="66" covered="false"/>
+    <lineToCover lineNumber="67" covered="false"/>
+    <lineToCover lineNumber="69" covered="false"/>
+    <lineToCover lineNumber="70" covered="false"/>
+    <lineToCover lineNumber="71" covered="false"/>
+    <lineToCover lineNumber="72" covered="false"/>
+    <lineToCover lineNumber="73" covered="false"/>
+    <lineToCover lineNumber="74" covered="false"/>
+    <lineToCover lineNumber="75" covered="false"/>
+    <lineToCover lineNumber="76" covered="false"/>
+    <lineToCover lineNumber="77" covered="false"/>
+    <lineToCover lineNumber="79" covered="false"/>
+    <lineToCover lineNumber="80" covered="false"/>
+    <lineToCover lineNumber="81" covered="false"/>
+    <lineToCover lineNumber="82" covered="false"/>
+    <lineToCover lineNumber="83" covered="false"/>
+    <lineToCover lineNumber="84" covered="false"/>
+    <lineToCover lineNumber="85" covered="false"/>
+    <lineToCover lineNumber="86" covered="false"/>
+    <lineToCover lineNumber="87" covered="false"/>
+    <lineToCover lineNumber="88" covered="false"/>
+    <lineToCover lineNumber="90" covered="false"/>
+    <lineToCover lineNumber="91" covered="false"/>
+    <lineToCover lineNumber="92" covered="false"/>
+    <lineToCover lineNumber="93" covered="false"/>
+  </file>
+  <file path="/Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/TournamentsView.swift">
+    <lineToCover lineNumber="19" covered="false"/>
+    <lineToCover lineNumber="25" covered="true"/>
+    <lineToCover lineNumber="26" covered="true"/>
+    <lineToCover lineNumber="27" covered="true"/>
+    <lineToCover lineNumber="28" covered="true"/>
+    <lineToCover lineNumber="29" covered="false"/>
+    <lineToCover lineNumber="30" covered="false"/>
+    <lineToCover lineNumber="31" covered="false"/>
+    <lineToCover lineNumber="32" covered="false"/>
+    <lineToCover lineNumber="33" covered="false"/>
+    <lineToCover lineNumber="34" covered="false"/>
+    <lineToCover lineNumber="35" covered="false"/>
+    <lineToCover lineNumber="36" covered="false"/>
+    <lineToCover lineNumber="37" covered="true"/>
+    <lineToCover lineNumber="38" covered="true"/>
+    <lineToCover lineNumber="39" covered="true"/>
+    <lineToCover lineNumber="40" covered="true"/>
+    <lineToCover lineNumber="41" covered="true"/>
+    <lineToCover lineNumber="42" covered="false"/>
+    <lineToCover lineNumber="43" covered="false"/>
+    <lineToCover lineNumber="44" covered="true"/>
+    <lineToCover lineNumber="45" covered="true"/>
+    <lineToCover lineNumber="46" covered="true"/>
+    <lineToCover lineNumber="47" covered="true"/>
+    <lineToCover lineNumber="48" covered="true"/>
+    <lineToCover lineNumber="49" covered="true"/>
+    <lineToCover lineNumber="50" covered="true"/>
+    <lineToCover lineNumber="51" covered="true"/>
+    <lineToCover lineNumber="52" covered="true"/>
+    <lineToCover lineNumber="53" covered="true"/>
+    <lineToCover lineNumber="54" covered="false"/>
+    <lineToCover lineNumber="55" covered="false"/>
+    <lineToCover lineNumber="56" covered="false"/>
+    <lineToCover lineNumber="57" covered="false"/>
+    <lineToCover lineNumber="58" covered="false"/>
+    <lineToCover lineNumber="59" covered="false"/>
+    <lineToCover lineNumber="60" covered="false"/>
+    <lineToCover lineNumber="61" covered="true"/>
+    <lineToCover lineNumber="62" covered="true"/>
+    <lineToCover lineNumber="63" covered="true"/>
+    <lineToCover lineNumber="64" covered="true"/>
+    <lineToCover lineNumber="65" covered="false"/>
+    <lineToCover lineNumber="66" covered="false"/>
+    <lineToCover lineNumber="67" covered="true"/>
+    <lineToCover lineNumber="68" covered="true"/>
+  </file>
+  <file path="/Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/TrailingIconLabelStyle.swift">
+    <lineToCover lineNumber="11" covered="false"/>
+    <lineToCover lineNumber="12" covered="false"/>
+    <lineToCover lineNumber="13" covered="false"/>
+    <lineToCover lineNumber="14" covered="false"/>
+    <lineToCover lineNumber="15" covered="false"/>
+    <lineToCover lineNumber="16" covered="false"/>
+    <lineToCover lineNumber="20" covered="false"/>
+  </file>
+  <file path="/Users/nico/Development/iOS/RoundRobinPro/RoundRobinProTests/RoundRobinProTests.swift">
+    <lineToCover lineNumber="12" covered="true"/>
+    <lineToCover lineNumber="13" covered="true"/>
+    <lineToCover lineNumber="14" covered="true"/>
+  </file>
+</coverage>
