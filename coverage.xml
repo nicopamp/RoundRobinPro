@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <coverage version="1">
-  <file path="/Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/DetailEditView.swift">
+  <file path="RoundRobinPro/DetailEditView.swift">
     <lineToCover lineNumber="12" covered="false"/>
     <lineToCover lineNumber="14" covered="false"/>
     <lineToCover lineNumber="15" covered="false"/>
@@ -58,7 +58,7 @@
     <lineToCover lineNumber="67" covered="false"/>
     <lineToCover lineNumber="68" covered="false"/>
   </file>
-  <file path="/Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/DetailView.swift">
+  <file path="RoundRobinPro/DetailView.swift">
     <lineToCover lineNumber="13" covered="false"/>
     <lineToCover lineNumber="16" covered="false"/>
     <lineToCover lineNumber="17" covered="false"/>
@@ -148,7 +148,7 @@
     <lineToCover lineNumber="106" covered="false"/>
     <lineToCover lineNumber="107" covered="false"/>
   </file>
-  <file path="/Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/EditTournamentSheet.swift">
+  <file path="RoundRobinPro/EditTournamentSheet.swift">
     <lineToCover lineNumber="18" covered="false"/>
     <lineToCover lineNumber="19" covered="false"/>
     <lineToCover lineNumber="20" covered="false"/>
@@ -212,7 +212,7 @@
     <lineToCover lineNumber="79" covered="false"/>
     <lineToCover lineNumber="80" covered="false"/>
   </file>
-  <file path="/Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/MatchCardView.swift">
+  <file path="RoundRobinPro/MatchCardView.swift">
     <lineToCover lineNumber="13" covered="false"/>
     <lineToCover lineNumber="14" covered="false"/>
     <lineToCover lineNumber="15" covered="false"/>
@@ -327,7 +327,7 @@
     <lineToCover lineNumber="135" covered="false"/>
     <lineToCover lineNumber="136" covered="false"/>
   </file>
-  <file path="/Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/MatchDetailView.swift">
+  <file path="RoundRobinPro/MatchDetailView.swift">
     <lineToCover lineNumber="17" covered="false"/>
     <lineToCover lineNumber="19" covered="false"/>
     <lineToCover lineNumber="20" covered="false"/>
@@ -435,7 +435,7 @@
     <lineToCover lineNumber="131" covered="false"/>
     <lineToCover lineNumber="132" covered="false"/>
   </file>
-  <file path="/Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/Models/Tournament.swift">
+  <file path="Models/Tournament.swift">
     <lineToCover lineNumber="21" covered="false"/>
     <lineToCover lineNumber="22" covered="false"/>
     <lineToCover lineNumber="25" covered="false"/>
@@ -701,7 +701,7 @@
     <lineToCover lineNumber="376" covered="false"/>
     <lineToCover lineNumber="377" covered="false"/>
   </file>
-  <file path="/Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/Models/TournamentStore.swift">
+  <file path="Models/TournamentStore.swift">
     <lineToCover lineNumber="12" covered="true"/>
     <lineToCover lineNumber="13" covered="true"/>
     <lineToCover lineNumber="17" covered="true"/>
@@ -779,7 +779,7 @@
     <lineToCover lineNumber="113" covered="false"/>
     <lineToCover lineNumber="114" covered="false"/>
   </file>
-  <file path="/Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/NewTournamentSheet.swift">
+  <file path="RoundRobinPro/NewTournamentSheet.swift">
     <lineToCover lineNumber="13" covered="false"/>
     <lineToCover lineNumber="14" covered="false"/>
     <lineToCover lineNumber="15" covered="false"/>
@@ -853,7 +853,7 @@
     <lineToCover lineNumber="85" covered="false"/>
     <lineToCover lineNumber="86" covered="false"/>
   </file>
-  <file path="/Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/RoundRobinProApp.swift">
+  <file path="RoundRobinPro/RoundRobinProApp.swift">
     <lineToCover lineNumber="14" covered="true"/>
     <lineToCover lineNumber="18" covered="true"/>
     <lineToCover lineNumber="19" covered="true"/>
@@ -896,7 +896,7 @@
     <lineToCover lineNumber="56" covered="true"/>
     <lineToCover lineNumber="57" covered="true"/>
   </file>
-  <file path="/Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/TournamentCardView.swift">
+  <file path="RoundRobinPro/TournamentCardView.swift">
     <lineToCover lineNumber="13" covered="false"/>
     <lineToCover lineNumber="14" covered="false"/>
     <lineToCover lineNumber="15" covered="false"/>
@@ -976,7 +976,7 @@
     <lineToCover lineNumber="92" covered="false"/>
     <lineToCover lineNumber="93" covered="false"/>
   </file>
-  <file path="/Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/TournamentsView.swift">
+  <file path="RoundRobinPro/TournamentsView.swift">
     <lineToCover lineNumber="19" covered="false"/>
     <lineToCover lineNumber="25" covered="true"/>
     <lineToCover lineNumber="26" covered="true"/>
@@ -1023,7 +1023,7 @@
     <lineToCover lineNumber="67" covered="true"/>
     <lineToCover lineNumber="68" covered="true"/>
   </file>
-  <file path="/Users/nico/Development/iOS/RoundRobinPro/RoundRobinPro/TrailingIconLabelStyle.swift">
+  <file path="RoundRobinPro/TrailingIconLabelStyle.swift">
     <lineToCover lineNumber="11" covered="false"/>
     <lineToCover lineNumber="12" covered="false"/>
     <lineToCover lineNumber="13" covered="false"/>
@@ -1032,7 +1032,7 @@
     <lineToCover lineNumber="16" covered="false"/>
     <lineToCover lineNumber="20" covered="false"/>
   </file>
-  <file path="/Users/nico/Development/iOS/RoundRobinPro/RoundRobinProTests/RoundRobinProTests.swift">
+  <file path="RoundRobinProTests/RoundRobinProTests.swift">
     <lineToCover lineNumber="12" covered="true"/>
     <lineToCover lineNumber="13" covered="true"/>
     <lineToCover lineNumber="14" covered="true"/>

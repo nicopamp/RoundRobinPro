@@ -2,11 +2,21 @@
 set -euo pipefail
 
 function convert_xccov_to_xml {
-  sed -n                                                                                       \
-      -e '/:$/s/&/\&amp;/g;s/^\(.*\):$/  <file path="\1">/p'                                   \
-      -e 's/^ *\([0-9][0-9]*\): 0.*$/    <lineToCover lineNumber="\1" covered="false"\/>/p'    \
-      -e 's/^ *\([0-9][0-9]*\): [1-9].*$/    <lineToCover lineNumber="\1" covered="true"\/>/p' \
-      -e 's/^$/  <\/file>/p'
+  while IFS= read -r line; do
+    if [[ $line =~ :$ ]]; then
+      # Extract the file path and remove the trailing colon
+      file_path="${line%:}"
+      # Get just the last two components of the path
+      relative_path=$(echo "$file_path" | rev | cut -d'/' -f1-2 | rev)
+      echo "  <file path=\"$relative_path\">"
+    elif [[ $line =~ ^[[:space:]]*([0-9]+):[[:space:]]*0 ]]; then
+      echo "    <lineToCover lineNumber=\"${BASH_REMATCH[1]}\" covered=\"false\"/>"
+    elif [[ $line =~ ^[[:space:]]*([0-9]+):[[:space:]]*[1-9] ]]; then
+      echo "    <lineToCover lineNumber=\"${BASH_REMATCH[1]}\" covered=\"true\"/>"
+    elif [[ -z $line ]]; then
+      echo "  </file>"
+    fi
+  done
 }
 
 function xccov_to_generic {
