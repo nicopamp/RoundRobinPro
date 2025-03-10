@@ -28,13 +28,40 @@ struct Tournament: Identifiable, Codable {
     
     // MARK: - Types
     
+    struct Config {
+        let id: UUID
+        let title: String
+        let teams: [String]
+        let matches: [Match]
+        let courts: Int
+        let state: TournamentState
+        
+        init(
+            id: UUID = UUID(),
+            title: String,
+            teams: [String],
+            matches: [Match] = [],
+            courts: Int,
+            state: TournamentState = .setup
+        ) {
+            self.id = id
+            self.title = title
+            self.teams = teams
+            self.matches = matches
+            self.courts = courts
+            self.state = state
+        }
+    }
+    
     enum TournamentState: Codable {
         case setup
         case inProgress(completedMatches: Int, totalMatches: Int)
         case completed(winner: Team?, finalStandings: [Team])
         
         var isCompleted: Bool {
-            if case .completed(_, _) = self { return true }
+            if case .completed(_, _) = self {
+                return true
+            }
             return false
         }
         
@@ -50,17 +77,28 @@ struct Tournament: Identifiable, Codable {
     
     // MARK: - Initialization
     
-    init(id: UUID = UUID(), title: String, teams: [String], matches: [Match] = [], courts: Int, state: TournamentState = .setup) {
-        self.id = id
-        self.title = title
-        self.teams = teams.map { Team(name: $0) }
-        self.schedule = matches
-        self.availableCourts = max(1, courts)
-        self.state = state
+    init(config: Config) {
+        self.id = config.id
+        self.title = config.title
+        self.teams = config.teams.map { Team(name: $0) }
+        self.schedule = config.matches
+        self.availableCourts = max(1, config.courts)
+        self.state = config.state
         
-        if !matches.isEmpty {
+        if !config.matches.isEmpty {
             updateState()
         }
+    }
+    
+    init(id: UUID = UUID(), title: String, teams: [String], matches: [Match] = [], courts: Int, state: TournamentState = .setup) {
+        self.init(config: Config(
+            id: id,
+            title: title,
+            teams: teams,
+            matches: matches,
+            courts: courts,
+            state: state
+        ))
     }
     
     // MARK: - State Management
@@ -186,16 +224,16 @@ private struct ScheduleConfig {
     let availableCourts: Int
     
     init(teams: [Tournament.Team], availableCourts: Int) {
-        var workingTeams = teams
+        var adjustedTeams = teams
         // Add a "Bye" if the number of teams is odd
         if teams.count % 2 != 0 {
-            workingTeams.append(Tournament.Team(name: "Bye"))
+            adjustedTeams.append(Tournament.Team(name: "Bye"))
         }
         
-        self.workingTeams = workingTeams
-        self.totalTeams = workingTeams.count
-        self.idealRounds = workingTeams.count - 1
-        self.matchesPerRound = workingTeams.count / 2
+        self.workingTeams = adjustedTeams
+        self.totalTeams = adjustedTeams.count
+        self.idealRounds = adjustedTeams.count - 1
+        self.matchesPerRound = adjustedTeams.count / 2
         self.availableCourts = availableCourts
     }
 }
@@ -277,53 +315,82 @@ private func createSessionMatches(
     return matches
 }
 
+// Processes a round of matches and creates sessions based on available courts
+private func processRound(
+    pairings: [(Int, Int)],
+    config: ScheduleConfig,
+    roundCounter: Int
+) -> (matches: [Tournament.Match], nextRound: Int) {
+    let roundPairings = separatePairings(pairings, teams: config.workingTeams)
+    var matches: [Tournament.Match] = []
+    var currentRound = roundCounter
+    
+    // Calculate number of sessions needed
+    let sessionCount = roundPairings.realPairings.isEmpty ? 0 : Int(ceil(Double(roundPairings.realPairings.count) / Double(config.availableCourts)))
+    let actualSessions = max(sessionCount, roundPairings.byePairings.isEmpty ? 0 : 1)
+    
+    // Process each session
+    for session in 0..<actualSessions {
+        let startIndex = session * config.availableCourts
+        let endIndex = min(startIndex + config.availableCourts, roundPairings.realPairings.count)
+        let sessionRealPairings = Array(roundPairings.realPairings[startIndex..<endIndex])
+        
+        var sessionPairings = session == 0 ? roundPairings.byePairings : []
+        sessionPairings.append(contentsOf: sessionRealPairings)
+        
+        let sessionMatches = createSessionMatches(
+            sessionPairings: sessionPairings,
+            teams: config.workingTeams,
+            round: currentRound,
+            availableCourts: config.availableCourts
+        )
+        
+        matches.append(contentsOf: sessionMatches)
+        
+        if !sessionRealPairings.isEmpty {
+            currentRound += 1
+        }
+    }
+    
+    return (matches: matches, nextRound: currentRound)
+}
+
+// Rotates pairings based on the round number if needed
+private func rotatePairingsIfNeeded(_ pairings: [(Int, Int)], idealRound: Int, matchesPerRound: Int) -> [(Int, Int)] {
+    guard idealRound % matchesPerRound != 0 else { return pairings }
+    
+    let shift = idealRound % matchesPerRound
+    return Array(pairings[shift...] + pairings[..<shift])
+}
+
 func generateBalancedSchedule(teams: [Tournament.Team], availableCourts: Int) -> [Tournament.Match] {
     guard !teams.isEmpty else { return [] }
     
     let config = ScheduleConfig(teams: teams, availableCourts: availableCourts)
     var schedule: [Tournament.Match] = []
     var indices = Array(0..<config.totalTeams)
-    var actualRoundCounter = 1
+    var currentRound = 1
     
     for idealRound in 0..<config.idealRounds {
-        var pairings = generateRoundPairings(indices: indices, matchesPerRound: config.matchesPerRound, idealRound: idealRound)
+        // Generate and rotate pairings
+        let basePairings = generateRoundPairings(
+            indices: indices,
+            matchesPerRound: config.matchesPerRound,
+            idealRound: idealRound
+        )
+        let pairings = rotatePairingsIfNeeded(basePairings, idealRound: idealRound, matchesPerRound: config.matchesPerRound)
         
-        // Rotate pairings if needed
-        if idealRound % config.matchesPerRound != 0 {
-            let shift = idealRound % config.matchesPerRound
-            pairings = Array(pairings[shift...] + pairings[..<shift])
-        }
+        // Process the round and get matches
+        let (roundMatches, nextRound) = processRound(
+            pairings: pairings,
+            config: config,
+            roundCounter: currentRound
+        )
         
-        let roundPairings = separatePairings(pairings, teams: config.workingTeams)
+        schedule.append(contentsOf: roundMatches)
+        currentRound = nextRound
         
-        // Calculate number of sessions needed
-        let sessionCount = roundPairings.realPairings.isEmpty ? 0 : Int(ceil(Double(roundPairings.realPairings.count) / Double(config.availableCourts)))
-        let actualSessions = max(sessionCount, roundPairings.byePairings.isEmpty ? 0 : 1)
-        
-        // Process each session
-        for session in 0..<actualSessions {
-            let startIndex = session * config.availableCourts
-            let endIndex = min(startIndex + config.availableCourts, roundPairings.realPairings.count)
-            let sessionRealPairings = Array(roundPairings.realPairings[startIndex..<endIndex])
-            
-            var sessionPairings = session == 0 ? roundPairings.byePairings : []
-            sessionPairings.append(contentsOf: sessionRealPairings)
-            
-            let sessionMatches = createSessionMatches(
-                sessionPairings: sessionPairings,
-                teams: config.workingTeams,
-                round: actualRoundCounter,
-                availableCourts: config.availableCourts
-            )
-            
-            schedule.append(contentsOf: sessionMatches)
-            
-            if !sessionRealPairings.isEmpty {
-                actualRoundCounter += 1
-            }
-        }
-        
-        // Rotate indices: move last element to position 1
+        // Rotate indices for next round
         let last = indices.removeLast()
         indices.insert(last, at: 1)
     }
@@ -334,94 +401,97 @@ func generateBalancedSchedule(teams: [Tournament.Team], availableCourts: Int) ->
 extension Tournament {
     static let sampleData: [Tournament] = [
         Tournament(
-            title: "Nationals 2025",
-            teams: ["Team Alpha", "Team Bravo", "Team Charlie", "Team Delta"],
-            matches: [
-                Tournament.Match(
-                    team1: Tournament.Team(name: "Team Alpha"),
-                    team2: Tournament.Team(name: "Team Bravo"),
-                    courtNumber: 1,
-                    round: 1
-                ),
-                Tournament.Match(
-                    team1: Tournament.Team(name: "Team Charlie"),
-                    team2: Tournament.Team(name: "Team Delta"),
-                    courtNumber: 1,
-                    round: 2
-                ),
-                Tournament.Match(
-                    team1: Tournament.Team(name: "Team Alpha"),
-                    team2: Tournament.Team(name: "Team Charlie"),
-                    courtNumber: 1,
-                    round: 3
-                ),
-                Tournament.Match(
-                    team1: Tournament.Team(name: "Team Bravo"),
-                    team2: Tournament.Team(name: "Team Delta"),
-                    courtNumber: 1,
-                    round: 4
-                )
-            ],
-            courts: 1,
-            state: .setup
+            config: Config(
+                title: "Nationals 2025",
+                teams: ["Team Alpha", "Team Bravo", "Team Charlie", "Team Delta"],
+                matches: [
+                    Tournament.Match(
+                        team1: Tournament.Team(name: "Team Alpha"),
+                        team2: Tournament.Team(name: "Team Bravo"),
+                        courtNumber: 1,
+                        round: 1
+                    ),
+                    Tournament.Match(
+                        team1: Tournament.Team(name: "Team Charlie"),
+                        team2: Tournament.Team(name: "Team Delta"),
+                        courtNumber: 1,
+                        round: 2
+                    ),
+                    Tournament.Match(
+                        team1: Tournament.Team(name: "Team Alpha"),
+                        team2: Tournament.Team(name: "Team Charlie"),
+                        courtNumber: 1,
+                        round: 3
+                    ),
+                    Tournament.Match(
+                        team1: Tournament.Team(name: "Team Bravo"),
+                        team2: Tournament.Team(name: "Team Delta"),
+                        courtNumber: 1,
+                        round: 4
+                    )
+                ],
+                courts: 1
+            )
         ),
         Tournament(
-            title: "Regionals 2025",
-            teams: ["Team Echo", "Team Foxtrot", "Team Golf", "Team Hotel"],
-            matches: [
-                Tournament.Match(
-                    team1: Tournament.Team(name: "Team Echo"),
-                    team2: Tournament.Team(name: "Team Foxtrot"),
-                    courtNumber: 1,
-                    round: 1
-                ),
-                Tournament.Match(
-                    team1: Tournament.Team(name: "Team Golf"),
-                    team2: Tournament.Team(name: "Team Hotel"),
-                    courtNumber: 2,
-                    round: 1
-                ),
-                Tournament.Match(
-                    team1: Tournament.Team(name: "Team Echo"),
-                    team2: Tournament.Team(name: "Team Golf"),
-                    courtNumber: 1,
-                    round: 2
-                ),
-                Tournament.Match(
-                    team1: Tournament.Team(name: "Team Foxtrot"),
-                    team2: Tournament.Team(name: "Team Hotel"),
-                    courtNumber: 2,
-                    round: 2
-                )
-            ],
-            courts: 2,
-            state: .setup
+            config: Config(
+                title: "Regionals 2025",
+                teams: ["Team Echo", "Team Foxtrot", "Team Golf", "Team Hotel"],
+                matches: [
+                    Tournament.Match(
+                        team1: Tournament.Team(name: "Team Echo"),
+                        team2: Tournament.Team(name: "Team Foxtrot"),
+                        courtNumber: 1,
+                        round: 1
+                    ),
+                    Tournament.Match(
+                        team1: Tournament.Team(name: "Team Golf"),
+                        team2: Tournament.Team(name: "Team Hotel"),
+                        courtNumber: 2,
+                        round: 1
+                    ),
+                    Tournament.Match(
+                        team1: Tournament.Team(name: "Team Echo"),
+                        team2: Tournament.Team(name: "Team Golf"),
+                        courtNumber: 1,
+                        round: 2
+                    ),
+                    Tournament.Match(
+                        team1: Tournament.Team(name: "Team Foxtrot"),
+                        team2: Tournament.Team(name: "Team Hotel"),
+                        courtNumber: 2,
+                        round: 2
+                    )
+                ],
+                courts: 2
+            )
         ),
         Tournament(
-            title: "District 2025",
-            teams: ["Team India", "Team Juliett", "Team Kilo"],
-            matches: [
-                Tournament.Match(
-                    team1: Tournament.Team(name: "Team India"),
-                    team2: Tournament.Team(name: "Team Juliett"),
-                    courtNumber: 1,
-                    round: 1
-                ),
-                Tournament.Match(
-                    team1: Tournament.Team(name: "Team India"),
-                    team2: Tournament.Team(name: "Team Kilo"),
-                    courtNumber: 1,
-                    round: 2
-                ),
-                Tournament.Match(
-                    team1: Tournament.Team(name: "Team Juliett"),
-                    team2: Tournament.Team(name: "Team Kilo"),
-                    courtNumber: 1,
-                    round: 3
-                )
-            ],
-            courts: 1,
-            state: .setup
+            config: Config(
+                title: "District 2025",
+                teams: ["Team India", "Team Juliett", "Team Kilo"],
+                matches: [
+                    Tournament.Match(
+                        team1: Tournament.Team(name: "Team India"),
+                        team2: Tournament.Team(name: "Team Juliett"),
+                        courtNumber: 1,
+                        round: 1
+                    ),
+                    Tournament.Match(
+                        team1: Tournament.Team(name: "Team India"),
+                        team2: Tournament.Team(name: "Team Kilo"),
+                        courtNumber: 1,
+                        round: 2
+                    ),
+                    Tournament.Match(
+                        team1: Tournament.Team(name: "Team Juliett"),
+                        team2: Tournament.Team(name: "Team Kilo"),
+                        courtNumber: 1,
+                        round: 3
+                    )
+                ],
+                courts: 1
+            )
         )
     ]
 }
