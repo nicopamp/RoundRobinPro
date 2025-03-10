@@ -39,7 +39,7 @@ xcrun xccov view --report --json coverage/coverage.xcresult > coverage/coverage.
 
 # Convert to SonarQube format using the generic converter
 echo "Converting to SonarQube format..."
-./scripts/xccov-to-sonarqube-generic.sh coverage/coverage.xcresult | tr -d '\r' > coverage/coverage.xml
+./scripts/xccov-to-sonarqube-generic.sh coverage/coverage.xcresult > coverage/coverage.xml
 
 # Verify files were created
 echo "Verifying coverage files..."
