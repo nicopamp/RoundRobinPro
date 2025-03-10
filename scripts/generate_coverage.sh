@@ -39,7 +39,7 @@ xcrun xccov view --report --json coverage/coverage.xcresult > coverage/coverage.
 
 # Convert to SonarQube format
 echo "Converting to SonarQube format..."
-xcrun xccov view --report --xml coverage/coverage.xcresult > coverage/coverage.xml
+xcrun xccov view --report --xml coverage/coverage.xcresult | sed '1s/^/<?xml version="1.0" encoding="UTF-8"?>\n/' > coverage/coverage.xml
 
 # Verify files were created
 echo "Verifying coverage files..."
