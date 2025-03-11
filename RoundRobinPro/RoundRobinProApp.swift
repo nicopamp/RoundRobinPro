@@ -22,8 +22,8 @@ struct RoundRobinProApp: App {
                 // Creates an asynchronous Task to perform the save operation.
                 Task {
                     do {
-                        // Attempt to save the current tournaments using the store's asynchronous save method.
-                        try await store.save(tournaments: store.tournaments)
+                        // Update to use the parameterless save method
+                        try await store.save()
                     } catch {
                         // If an error occurs during saving, update the error message state.
                         errorMessage = error.localizedDescription

@@ -6,9 +6,13 @@ function convert_xccov_to_xml {
     if [[ $line =~ :$ ]]; then
       # Extract the file path and remove the trailing colon
       file_path="${line%:}"
-      # Get just the last two components of the path
-      relative_path=$(echo "$file_path" | rev | cut -d'/' -f1-2 | rev)
-      echo "  <file path=\"$relative_path\">"
+      # Extract everything after "RoundRobinPro/"
+      relative_path=$(echo "$file_path" | sed -n 's/.*RoundRobinPro\/\(.*\)/\1/p')
+      # If no match found (file is in root), just use the basename
+      if [ -z "$relative_path" ]; then
+        relative_path=$(basename "$file_path")
+      fi
+      echo "  <file path=\"RoundRobinPro/$relative_path\">"
     elif [[ $line =~ ^[[:space:]]*([0-9]+):[[:space:]]*0 ]]; then
       echo "    <lineToCover lineNumber=\"${BASH_REMATCH[1]}\" covered=\"false\"/>"
     elif [[ $line =~ ^[[:space:]]*([0-9]+):[[:space:]]*[1-9] ]]; then

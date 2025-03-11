@@ -69,21 +69,22 @@ struct TournamentsView: View {
 }
 
 #Preview {
-    TournamentsView(
-        store: {
-            let store = TournamentStore()
-            for tournament in Tournament.sampleData {
-                do {
-                    try store.add(tournament)
-                } catch {
-                    print("Error adding sample tournament: \(error.localizedDescription)")
+    NavigationStack {
+        TournamentsView(
+            store: {
+                let store = TournamentStore()
+                // Create a Task to handle async operations
+                Task { @MainActor in
+                    for tournament in Tournament.sampleData {
+                        try? await store.add(tournament)
+                    }
                 }
+                return store
+            }(),
+            saveAction: {
+                // Preview only: Print a message when save is triggered
+                print("Preview: Save action triggered")
             }
-            return store
-        }(),
-        saveAction: {
-            // Preview only: Print a message when save is triggered
-            print("Preview: Save action triggered")
-        }
-    )
+        )
+    }
 }

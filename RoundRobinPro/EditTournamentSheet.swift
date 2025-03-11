@@ -22,7 +22,7 @@ struct EditTournamentSheet: View {
         
         // Initialize state with current tournament values
         _editingTitle = State(initialValue: tournament.wrappedValue.title)
-        _editingTeams = State(initialValue: tournament.wrappedValue.teams.map { $0.name })
+        _editingTeams = State(initialValue: tournament.wrappedValue.activeTeams.map { $0.name })
         _editingCourts = State(initialValue: Double(tournament.wrappedValue.availableCourts))
     }
     
@@ -82,7 +82,7 @@ struct EditTournamentSheet: View {
 
 #Preview {
     EditTournamentSheet(
-        tournament: .constant(Tournament.sampleData[0]),
+        tournament: .constant(Tournament.sampleData[2]),
         isPresentingEditView: .constant(true),
         onSave: { _ in }
     )

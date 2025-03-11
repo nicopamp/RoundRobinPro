@@ -53,18 +53,20 @@ struct NewTournamentSheet: View {
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Add") {
-                        do {
-                            var newTournament = Tournament(
-                                title: title,
-                                teams: teams.filter { !$0.isEmpty },
-                                courts: Int(availableCourts),
-                                state: .setup
-                            )
-                            newTournament.updateSchedule() // Generate initial schedule
-                            try store.add(newTournament)
-                            isPresentingNewTournamentView = false
-                        } catch {
-                            errorMessage = error.localizedDescription
+                        Task {
+                            do {
+                                var newTournament = Tournament(
+                                    title: title,
+                                    teams: teams.filter { !$0.isEmpty },
+                                    courts: Int(availableCourts),
+                                    state: .setup
+                                )
+                                newTournament.updateSchedule() // Generate initial schedule
+                                try await store.add(newTournament)
+                                isPresentingNewTournamentView = false
+                            } catch {
+                                errorMessage = error.localizedDescription
+                            }
                         }
                     }
                     .disabled(title.isEmpty || teams.filter { !$0.isEmpty }.count < 2)

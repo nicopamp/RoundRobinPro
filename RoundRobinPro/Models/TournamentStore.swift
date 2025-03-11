@@ -71,11 +71,11 @@ final class TournamentStore: ObservableObject {
         self.tournaments = try await task.value
     }
     
-    func save(tournaments: [Tournament]) async throws {
+    func save() async throws {
         try await withCheckedThrowingContinuation { continuation in
             queue.async {
                 do {
-                    let data = try JSONEncoder().encode(tournaments)
+                    let data = try JSONEncoder().encode(self.tournaments)
                     let outfile = try Self.fileURL()
                     try data.write(to: outfile, options: .atomic)
                     continuation.resume()
@@ -86,21 +86,27 @@ final class TournamentStore: ObservableObject {
         }
     }
     
-    func add(_ tournament: Tournament) throws {
+    func add(_ tournament: Tournament) async throws {
         try validate(tournament)
         tournaments.append(tournament)
+        try await save()
     }
     
-    func update(_ tournament: Tournament) throws {
+    func update(_ tournament: Tournament) async throws {
         try validate(tournament)
         guard let index = tournaments.firstIndex(where: { $0.id == tournament.id }) else {
             throw StoreError.tournamentNotFound(tournament.id)
         }
         tournaments[index] = tournament
+        try await save()
     }
     
-    func remove(_ tournament: Tournament) {
-        tournaments.removeAll { $0.id == tournament.id }
+    func remove(_ id: UUID) async throws {
+        guard tournaments.contains(where: { $0.id == id }) else {
+            throw StoreError.tournamentNotFound(id)
+        }
+        tournaments.removeAll { $0.id == id }
+        try await save()
     }
     
     // MARK: - Convenience Methods
@@ -109,7 +115,8 @@ final class TournamentStore: ObservableObject {
         tournaments.first { $0.id == id }
     }
     
-    func removeAll() {
+    func removeAll() async throws {
         tournaments.removeAll()
+        try await save()
     }
 }

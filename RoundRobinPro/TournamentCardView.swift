@@ -21,14 +21,14 @@ struct TournamentCardView: View {
             
             HStack {
                 Label {
-                    Text("\(tournament.teams.count) teams")
+                    Text("\(tournament.activeTeams.count) teams")
                         .foregroundStyle(.secondary)
                 } icon: {
                     Image(systemName: "person.3.fill")
                         .foregroundStyle(.secondary)
                 }
                 .accessibilityElement(children: .combine)
-                .accessibilityLabel("\(tournament.teams.count) teams participating")
+                .accessibilityLabel("\(tournament.activeTeams.count) teams participating")
                 .accessibilityHint("Shows the total number of teams in the tournament")
                 
                 Spacer()

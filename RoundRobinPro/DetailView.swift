@@ -41,7 +41,7 @@ struct DetailView: View {
             HStack {
                 Label("Teams", systemImage: "person.3")
                 Spacer()
-                Text("\(tournament.teams.count)")
+                Text("\(tournament.activeTeams.count)")
             }
             
             HStack {
@@ -80,10 +80,12 @@ struct DetailView: View {
                 updatedTournament.schedule[matchIndex].team1Score = team1Score
                 updatedTournament.schedule[matchIndex].team2Score = team2Score
                 updatedTournament.schedule[matchIndex].isCompleted = true
-                do {
-                    try store.update(updatedTournament)
-                } catch {
-                    print("Error updating tournament: \(error.localizedDescription)")
+                Task {
+                    do {
+                        try await store.update(updatedTournament)
+                    } catch {
+                        print("Error updating tournament: \(error.localizedDescription)")
+                    }
                 }
             }
         }
@@ -95,10 +97,12 @@ struct DetailView: View {
                 tournament: $editingTournament,
                 isPresentingEditView: $isPresentingEditView,
                 onSave: { updatedTournament in
-                    do {
-                        try store.update(updatedTournament)
-                    } catch {
-                        print("Error updating tournament: \(error.localizedDescription)")
+                    Task {
+                        do {
+                            try await store.update(updatedTournament)
+                        } catch {
+                            print("Error updating tournament: \(error.localizedDescription)")
+                        }
                     }
                 }
             )

@@ -19,7 +19,7 @@ struct Tournament: Identifiable, Codable {
     
     var courtsAsDouble: Double {
         get { Double(availableCourts) }
-        set { availableCourts = max(1, Int(newValue)) }  // Ensure minimum of 1 court
+        set { availableCourts = Int(newValue) }
     }
     
     var isCompleted: Bool { state.isCompleted }
@@ -72,7 +72,7 @@ struct Tournament: Identifiable, Codable {
         self.title = title
         self.teams = teams.map { Team(name: $0) }
         self.schedule = matches
-        self.availableCourts = max(1, courts)
+        self.availableCourts = courts
         self.state = state
         
         if !matches.isEmpty {
@@ -86,10 +86,12 @@ struct Tournament: Identifiable, Codable {
         let actualMatches = schedule.filter { !$0.isByeMatch }
         let totalMatches = actualMatches.count
         let completedMatches = actualMatches.filter(\.isCompleted).count
+        let expectedMatches = (activeTeams.count * (activeTeams.count - 1)) / 2
         
         if totalMatches == 0 {
             state = .setup
-        } else if completedMatches == totalMatches {
+        } else if completedMatches == totalMatches && completedMatches == expectedMatches {
+            // Only complete if we've played all possible matches
             let standings = calculateStandings(from: actualMatches)
             state = .completed(winner: standings.first, finalStandings: standings)
         } else {
@@ -107,12 +109,14 @@ struct Tournament: Identifiable, Codable {
         
         // Update wins and losses
         for match in matches where match.isCompleted {
-            if match.team1Score > match.team2Score {
-                standingsDict[match.team1.id]?.wins += 1
-                standingsDict[match.team2.id]?.losses += 1
-            } else if match.team2Score > match.team1Score {
-                standingsDict[match.team2.id]?.wins += 1
-                standingsDict[match.team1.id]?.losses += 1
+            if match.team1Score >= 0 && match.team2Score >= 0 {
+                if match.team1Score > match.team2Score {
+                    standingsDict[match.team1.id]?.wins += 1
+                    standingsDict[match.team2.id]?.losses += 1
+                } else if match.team2Score > match.team1Score {
+                    standingsDict[match.team2.id]?.wins += 1
+                    standingsDict[match.team1.id]?.losses += 1
+                }
             }
         }
         
@@ -138,7 +142,7 @@ extension Tournament {
         }
         
         static func == (lhs: Team, rhs: Team) -> Bool {
-            lhs.id == rhs.id
+            lhs.name == rhs.name
         }
     }
     
@@ -190,7 +194,17 @@ extension Tournament {
 
 extension Tournament {
     mutating func updateSchedule() {
-        self.schedule = generateBalancedSchedule(teams: self.teams, availableCourts: self.availableCourts)
+        // Create schedule config which may add a bye team
+        let config = ScheduleConfig(teams: self.teams, availableCourts: self.availableCourts)
+        
+        // Update teams array to include bye team if needed
+        self.teams = config.workingTeams
+        
+        // Generate schedule
+        self.schedule = generateBalancedSchedule(teams: config.workingTeams, availableCourts: self.availableCourts)
+        
+        // Update state after schedule generation
+        updateState()
     }
 }
 
