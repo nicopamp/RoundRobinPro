@@ -72,10 +72,11 @@ final class TournamentStore: ObservableObject {
     }
     
     func save() async throws {
+        let tournaments = self.tournaments // Capture tournaments array before async work
         try await withCheckedThrowingContinuation { continuation in
             queue.async {
                 do {
-                    let data = try JSONEncoder().encode(self.tournaments)
+                    let data = try JSONEncoder().encode(tournaments)
                     let outfile = try Self.fileURL()
                     try data.write(to: outfile, options: .atomic)
                     continuation.resume()
